@@ -14,11 +14,11 @@
 #include "opcodetable.h"
 /******************************************************************************/
 extern U8 opRelSwap[];
-extern OPCODE *activeOpcode,*opcodeSta,*opcodeSty,*opcodeStx;
+extern OPCODE* activeOpcode, *opcodeSta, *opcodeSty, *opcodeStx;
 /******************************************************************************/
-int 	FASTCALL IsOpcodeName(char *label);
-int 	FASTCALL RelSwapOp(int op);
-char *	FASTCALL GetOpcodeName(int code);
+int FASTCALL IsOpcodeName(char* label);
+int FASTCALL RelSwapOp(int op);
+char* FASTCALL GetOpcodeName(int code);
 /******************************************************************************/
 #endif
 /******************************************************************************/

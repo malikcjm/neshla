@@ -12,16 +12,14 @@
 #define listH
 /******************************************************************************/
 typedef struct _PLIST {
-	struct _PLIST *prev,*next;
-	U16 entCount;
-	void *data;
-} PLIST;        
+    struct _PLIST* prev, *next;
+    U16 entCount;
+    void* data;
+} PLIST;
 /******************************************************************************/
-PLIST *NewList(PLIST *parent, int size);
-void FreeList(PLIST *list);
-void FreeLists(PLIST **plist);
+PLIST* NewList(PLIST* parent, int size);
+void FreeList(PLIST* list);
+void FreeLists(PLIST** plist);
 /******************************************************************************/
-#endif                                                                          
+#endif
 /******************************************************************************/
-
- 

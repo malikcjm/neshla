@@ -15,36 +15,36 @@
 /******************************************************************************/
 
 /******************************************************************************/
-PLIST *NewList(PLIST *parent, int size)
+PLIST* NewList(PLIST* parent, int size)
 {
-	PLIST *newlist = (PLIST*) ssCalloc(sizeof(PLIST));
-	if(parent)
-		parent->next = newlist;
-	newlist->prev = parent;
-	newlist->data = (void*)ssCalloc(size);
-	return newlist;
+    PLIST* newlist = (PLIST*)ssCalloc(sizeof(PLIST));
+    if (parent)
+        parent->next = newlist;
+    newlist->prev = parent;
+    newlist->data = (void*)ssCalloc(size);
+    return newlist;
 }
 /******************************************************************************/
-void FreeList(PLIST *list)
+void FreeList(PLIST* list)
 {
-	if(!list) return;
-	if(list->next)
-		list->next->prev = list->prev;
-	if(list->prev)
-		list->prev->next = list->next;
-	ssFree(list->data);
-	ssFree(list);
+    if (!list)
+        return;
+    if (list->next)
+        list->next->prev = list->prev;
+    if (list->prev)
+        list->prev->next = list->next;
+    ssFree(list->data);
+    ssFree(list);
 }
 /******************************************************************************/
-void FreeLists(PLIST **plist)
+void FreeLists(PLIST** plist)
 {
-	PLIST *list = *plist;
-	if(!list) return;
-	while(list->next)
-		FreeList(list->next);
-	FreeList(list);
+    PLIST* list = *plist;
+    if (!list)
+        return;
+    while (list->next)
+        FreeList(list->next);
+    FreeList(list);
     *plist = NULL;
 }
 /******************************************************************************/
-
- 

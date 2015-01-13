@@ -15,15 +15,15 @@
 #include "output\banks.h"
 #include "output\fixoffs.h"
 /******************************************************************************/
-#define FUNCFLAG_USED				0x8000
-#define FUNCFLAG_NORET				0x4000
-#define FUNCFLAG_MAKETYPE(funcFlags,subtype)\
-			funcFlags = (funcFlags&0xFFFC) | (subtype&0x0003)
-#define FUNCFLAG_GETTYPE(funcFlags)\
-			(funcFlags & 0x0003)
+#define FUNCFLAG_USED 0x8000
+#define FUNCFLAG_NORET 0x4000
+#define FUNCFLAG_MAKETYPE(funcFlags, subtype) \
+    funcFlags = (funcFlags & 0xFFFC) | (subtype & 0x0003)
+#define FUNCFLAG_GETTYPE(funcFlags) \
+    (funcFlags & 0x0003)
 
 enum {
-	FUNCTYPE_FUNCTION,
+    FUNCTYPE_FUNCTION,
     FUNCTYPE_INTERRUPT,
     FUNCTYPE_INLINE,
 
@@ -31,7 +31,7 @@ enum {
 };
 
 enum {
-	INTTYPE_START,
+    INTTYPE_START,
     INTTYPE_NMI,
     INTTYPE_IRQ,
 
@@ -39,42 +39,42 @@ enum {
 };
 
 typedef struct _PARAM {
-	struct _PARAM *prev;
-   	DEFINE def;
+    struct _PARAM* prev;
+    DEFINE def;
 } PARAM;
 
 typedef struct _FUNC {
-	struct _FUNC *prev,*next,*parent,*childFuncs;
-    U16		type;
-    U16		flags;
-	S32 	offset;
-    char	*label;
-	BANK 	*bank;
+    struct _FUNC* prev, *next, *parent, *childFuncs;
+    U16 type;
+    U16 flags;
+    S32 offset;
+    char* label;
+    BANK* bank;
     // for inline
-    char 	*macDef;
-	PARAM	*params;
-    LABEL	*labels;
-    FIXOFFS	*fixoffs;
+    char* macDef;
+    PARAM* params;
+    LABEL* labels;
+    FIXOFFS* fixoffs;
 } FUNC;
 /******************************************************************************/
-extern FUNC *functions,*curFunction,*curMacro,*macker;
-extern char *szFuncTypes[], *szIntTypes[];
+extern FUNC* functions, *curFunction, *curMacro, *macker;
+extern char* szFuncTypes[], *szIntTypes[];
 
-void 	FASTCALL FreeParameters(PARAM **pparams);
-void 	FASTCALL FreeFunctions(FUNC **pfunc);
-FUNC *	FASTCALL AddFunction(char *label, U16 type);
-FUNC* 	FASTCALL ReleaseCurFunc(void);
-FUNC* 	FASTCALL FindFunction(FUNC *func, char *label);
-FUNC* 	FASTCALL FindFirstCurFunc(void);
-FUNC* 	FASTCALL FindFirstFunction(FUNC *func);
-int 	FASTCALL IsFuncType(char *label);
-PARAM* 	FASTCALL FindParameterIndex(PARAM *param,int idx);
-PARAM *	FASTCALL AddParameter(FUNC *func, char *str);
-FUNC* 	FASTCALL MakeCurMacro(FUNC *ofmac);
-FUNC* 	FASTCALL SetCurMacro(FUNC *newmac);
-FUNC* 	FASTCALL ReleaseCurMacro(void);
+void FASTCALL FreeParameters(PARAM** pparams);
+void FASTCALL FreeFunctions(FUNC** pfunc);
+FUNC* FASTCALL AddFunction(char* label, U16 type);
+FUNC* FASTCALL ReleaseCurFunc(void);
+FUNC* FASTCALL FindFunction(FUNC* func, char* label);
+FUNC* FASTCALL FindFirstCurFunc(void);
+FUNC* FASTCALL FindFirstFunction(FUNC* func);
+int FASTCALL IsFuncType(char* label);
+PARAM* FASTCALL FindParameterIndex(PARAM* param, int idx);
+PARAM* FASTCALL AddParameter(FUNC* func, char* str);
+FUNC* FASTCALL MakeCurMacro(FUNC* ofmac);
+FUNC* FASTCALL SetCurMacro(FUNC* newmac);
+FUNC* FASTCALL ReleaseCurMacro(void);
 
-PARAM *	FASTCALL SetParameter(FUNC *func, int num, char *str);
+PARAM* FASTCALL SetParameter(FUNC* func, int num, char* str);
 /******************************************************************************/
 #endif
 /******************************************************************************/

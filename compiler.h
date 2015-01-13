@@ -9,18 +9,18 @@
 
 /******************************************************************************/
 #ifndef compilerH
-#define compilerH      
+#define compilerH
 /******************************************************************************/
-#define SZ_VERSION		"1.0.0"
-#define SZ_BUILD_DATE	"April 12th, 2005" //"December 19th, 2003"
+#define SZ_VERSION "1.0.0"
+#define SZ_BUILD_DATE "April 12th, 2005" //"December 19th, 2003"
 
 /******************************************************************************/
 #include <stdio.h>
 #include <string.h>
 #include <stdarg.h>
-#include <conio.h> 
-#include <stdlib.h>     
-#include <ctype.h>  
+#include <conio.h>
+#include <stdlib.h>
+#include <ctype.h>
 #include <malloc.h>
 
 #include "typedefs.h"
@@ -41,8 +41,8 @@
 #include "getcode.h"
 
 #include "prepbase.h"
-                     
-#include "vars.h"  
+
+#include "vars.h"
 #include "functions.h"
 #include "labels.h"
 
@@ -55,9 +55,9 @@
 #include "data\data.h"
 
 /******************************************************************************/
-#define STRCMP	ssStrCmp
+#define STRCMP ssStrCmp
 /******************************************************************************/
-BOOL DoCompile(char *szFilename);
+BOOL DoCompile(char* szFilename);
 /******************************************************************************/
 #endif
 /******************************************************************************/

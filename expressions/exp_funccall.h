@@ -15,10 +15,9 @@
 /******************************************************************************/
 
 /******************************************************************************/
-char *FASTCALL GetParamBlock(void);
+char* FASTCALL GetParamBlock(void);
 void FASTCALL SeekThroughParamBlock(void);
-BOOL FASTCALL comProc_FunctionCall(U16 flags, S16 *brackCnt);
+BOOL FASTCALL comProc_FunctionCall(U16 flags, S16* brackCnt);
 /******************************************************************************/
 #endif
 /******************************************************************************/
-

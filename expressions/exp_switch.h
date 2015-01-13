@@ -16,21 +16,20 @@
 
 /******************************************************************************/
 
-BOOL FASTCALL comProc_Switch(U16 flags, S16 *brackCnt);
+BOOL FASTCALL comProc_Switch(U16 flags, S16* brackCnt);
 BOOL FASTCALL DoCaseBlock(U16 flags);
 BOOL FASTCALL CheckNearFar(void);
-                        
+
 /******************************************************************************/
 typedef struct _BRANCHLIST {
-	struct _BRANCHLIST *prev;
-	int mode;
-    U8 *ptr;
+    struct _BRANCHLIST* prev;
+    int mode;
+    U8* ptr;
     S32 offset;
 } BRANCHLIST;
 
-void FASTCALL AddBranchPos(BRANCHLIST **branches, int mode);
-void FASTCALL WriteBranches(BRANCHLIST **branches);
+void FASTCALL AddBranchPos(BRANCHLIST** branches, int mode);
+void FASTCALL WriteBranches(BRANCHLIST** branches);
 /******************************************************************************/
 #endif
 /******************************************************************************/
-

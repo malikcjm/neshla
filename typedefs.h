@@ -13,24 +13,23 @@
 /*********************************************************************/
 
 #ifdef _SYS_VS
-	#define FASTCALL
+#define FASTCALL
 #endif
 #ifdef _SYS_BCB
-	#define FASTCALL __fastcall
+#define FASTCALL __fastcall
 #endif
 
-
 /* data types */
-typedef unsigned char		U8;
-typedef signed char			S8;
-typedef unsigned short		U16;
-typedef signed short		S16;
-typedef unsigned long		U32;
-typedef signed long			S32;
-typedef unsigned short		BOOL;
+typedef unsigned char U8;
+typedef signed char S8;
+typedef unsigned short U16;
+typedef signed short S16;
+typedef unsigned long U32;
+typedef signed long S32;
+typedef unsigned short BOOL;
 
-#define TRUE 				1
-#define FALSE 				0
+#define TRUE 1
+#define FALSE 0
 
 /******************************************************************************/
 #endif

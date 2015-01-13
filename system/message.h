@@ -13,41 +13,41 @@
 /******************************************************************************/
 #include "compiler.h"
 /******************************************************************************/
-extern int errorCnt,warnCnt,todoCnt;
+extern int errorCnt, warnCnt, todoCnt;
 extern BOOL COMPILE_SUCCESS;
 /******************************************************************************/
 void InitMessages(void);
 void ShutDownMessages(void);
 
 void error(int errnum, ...);
-void errorf(char *filename, int line, int errnum, ...);
+void errorf(char* filename, int line, int errnum, ...);
 void fatal(int errnum, ...);
 void warning(int errnum, ...);
-void notice(int msg, char *str, ...);
+void notice(int msg, char* str, ...);
 void todo(char*);
 void message(int errnum, ...);
-void logprint(char *s, ...);
+void logprint(char* s, ...);
 void logenter(void);
 void logexit(void);
 #define QSTR "\"%s\""
 #define QCHAR "'%c'"
 /******************************************************************************/
 enum _ERRORS {
-	ERR_USERPREP,
-	ERR_INVALIDCODE,
+    ERR_USERPREP,
+    ERR_INVALIDCODE,
     ERR_MISPLACEDCODE,
-	ERR_BRACENOTALLOWED,
+    ERR_BRACENOTALLOWED,
     ERR_BRACECLOSENOTALLOWED,
     ERR_TOOFEWBRACKETS,
     ERR_CLOSEBRACKEXP,
     ERR_CLOSEBRACEEXP,
     ERR_INVCHARCODE,
     ERR_CHARENDEXP,
-	ERR_SCRIPTNUMNOTSPEC,
-	ERR_SCRIPTDEFINED,
-	ERR_RESNUMOUTOFRANGE,
-	ERR_INTEXP,
-	ERR_PREPROCESSORID,
+    ERR_SCRIPTNUMNOTSPEC,
+    ERR_SCRIPTDEFINED,
+    ERR_RESNUMOUTOFRANGE,
+    ERR_INTEXP,
+    ERR_PREPROCESSORID,
     ERR_ILLEGALINT,
     ERR_ILLEGALCHARACTER,
     ERR_UNTERM_STRING,
@@ -91,14 +91,14 @@ enum _ERRORS {
     ERR_ASSIGNMENT,
     ERR_INVCOND,
     ERR_IFCONDCLOSEEXP,
-	ERR_IFENCLOSEEXP,
+    ERR_IFENCLOSEEXP,
     ERR_WHILEEXP,
     ERR_FUNCVOIDRET,
     ERR_CASECOLEXP,
-	ERR_PROPORMETHFORSEND,
-	ERR_SENDTOOLARGE,
-	ERR_SWITCHINBRACE,
-	ERR_SWITCHOUTBRACE,
+    ERR_PROPORMETHFORSEND,
+    ERR_SENDTOOLARGE,
+    ERR_SWITCHINBRACE,
+    ERR_SWITCHOUTBRACE,
     ERR_FUNCINBRACK,
     ERR_FUNCENDSOON,
     ERR_PARAMCOMMA,
@@ -111,24 +111,24 @@ enum _ERRORS {
     ERR_READONLYPROP,
     ERR_INVSEND,
     ERR_NOSENDOBJ,
-	ERR_KERNELFUNCPUBLIC,
+    ERR_KERNELFUNCPUBLIC,
     ERR_VARPUBLIC,
     ERR_MAXDISPATCH,
-	ERR_OBJFILEOVERFLOW,
+    ERR_OBJFILEOVERFLOW,
     ERR_SAVINGUNIT,
     ERR_LOADINGUNIT,
     ERR_INVALIDUNIT,
     ERR_INVALIDUNITVER,
     ERR_TOOMANYPARAMS,
-	ERR_ILLEGALBIN,
+    ERR_ILLEGALBIN,
     ERR_UNIMPLEMENTED,
     ERR_INVALIDALIGN,
     ERR_VARNOBANK,
     ERR_LABELNOBANK,
-    ERR_PREPROCESSSUB,  
+    ERR_PREPROCESSSUB,
     ERR_UNKMAPPER,
     ERR_UNKMIRRORING,
-   	ERR_CODEINRAM,
+    ERR_CODEINRAM,
 
     ERR_FUNCDECINBRACK,
     ERR_FUNCDECOUTBRACK,
@@ -139,8 +139,8 @@ enum _ERRORS {
 
     ERR_NEWLINEEXPECTED,
 
-	ERR_PARAMNOTIMMIDIATE,
-	ERR_PARAMNOTINDIRECT,
+    ERR_PARAMNOTIMMIDIATE,
+    ERR_PARAMNOTINDIRECT,
     ERR_PARAMNOINDEXED,
     ERR_PARAMINVALIDINDEX,
     ERR_OPBRACECLOSEUNEXP,
@@ -199,7 +199,7 @@ enum _ERRORS {
 
     ERR_SELFNESTEDDEF,
     ERR_SELFNESTEDSOURCE,
-    
+
     ERR_ADDINGPATH,
 
     ERR_VARNOTARRAY,
@@ -238,31 +238,31 @@ enum _ERRORS {
     ERR_OPZPINDEXONLY,
 };
 /******************************************************************************/
-enum _FATALS {     
-	FTL_USERPREP,
-	FTL_OUTOFMEMORY,
-	FTL_COMPFAIL,
+enum _FATALS {
+    FTL_USERPREP,
+    FTL_OUTOFMEMORY,
+    FTL_COMPFAIL,
     FTL_OUTPUTSCRIPTOVERFLO,
     FTL_SAVINGRESOURCE,
-	FTL_OPENFILE_IN,
-	FTL_OPENFILE_OUT,
+    FTL_OPENFILE_IN,
+    FTL_OPENFILE_OUT,
     FTL_TOOMANYBRACKETS,
     FTL_LABELMEMORY,
-	FTL_CODENOTTERMINATED,   
+    FTL_CODENOTTERMINATED,
     FTL_NOACTIVEBANK,
     FTL_MAXBANKCOUNT,
-    FTL_BANKOVERFLO, 
+    FTL_BANKOVERFLO,
     FTL_CURBANKINTERRUPTOVER,
     FTL_NOTROMBANK,
     FTL_NOTCHRBANK,
-    FTL_VARNOTROMBANK, 
+    FTL_VARNOTROMBANK,
     FTL_TOOMANYBRACES,
     FTL_OPENINGFILEWRITE,
-	FTL_FUNCTIONERR,
+    FTL_FUNCTIONERR,
 };
 /******************************************************************************/
 enum _WARNINGS {
-	WRN_USERPREP,
+    WRN_USERPREP,
     WRN_CHARCONV,
     WRN_WORDCONV,
     WRN_CODEINCHR,
@@ -275,12 +275,12 @@ enum _WARNINGS {
 
     WRN_VARINTFUNC,
     WRN_CODEINRAM,
-};         
+};
 /******************************************************************************/
 enum _NOTICE {
-	MSG_NONE,
-	MSG_DEBUG,
-	MSG_COMPSUCCESS,
+    MSG_NONE,
+    MSG_DEBUG,
+    MSG_COMPSUCCESS,
 
 };
 /******************************************************************************/

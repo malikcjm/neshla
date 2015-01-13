@@ -10,9 +10,9 @@
 /******************************************************************************/
 #pragma hdrstop
 #ifdef _SYS_BCB
-	#include <dir.h>
+#include <dir.h>
 #else
-	#include <direct.h>
+#include <direct.h>
 #endif
 #include <time.h>
 #include "compiler.h"
@@ -25,117 +25,114 @@ void PrintTime(void);
 /******************************************************************************/
 int main(int argc, char* argv[])
 {
-	int c,i,l;
-    char *s,*p;
+    int c, i, l;
+    char* s, *p;
 
-	clock_t start, end;
-	start = clock();
+    clock_t start, end;
+    start = clock();
 
-	message(0,"Nintendo NES High Level Assembler");
-    message(0,"Version %s, %s",SZ_VERSION,SZ_BUILD_DATE);
-    message(0,"By Brian Provinciano :: http://www.bripro.com");
-    message(0,"");
+    message(0, "Nintendo NES High Level Assembler");
+    message(0, "Version %s, %s", SZ_VERSION, SZ_BUILD_DATE);
+    message(0, "By Brian Provinciano :: http://www.bripro.com");
+    message(0, "");
 
-    if(argc < 1)
-    	return 3;
+    if (argc < 1)
+        return 3;
 
     s = argv[0];
-    if(strlen(s) > 3 && (s[1]==':')) {
-    	strcpy(szprogdir,argv[0]);
-    	l = strlen(szprogdir)-1;
-        s = szprogdir+l;
-        while(l>0) {
-         	if(*s == '\\') {
-            	*s = '\0';
+    if (strlen(s) > 3 && (s[1] == ':')) {
+        strcpy(szprogdir, argv[0]);
+        l = strlen(szprogdir) - 1;
+        s = szprogdir + l;
+        while (l > 0) {
+            if (*s == '\\') {
+                *s = '\0';
                 break;
             }
             s--;
         }
     } else {
-		if(!_getcwd(szprogdir, sizeof(szprogdir)-1))
-        	return 3;
+        if (!_getcwd(szprogdir, sizeof(szprogdir) - 1))
+            return 3;
     }
 
     l = strlen(szprogdir);
-    if(l && szprogdir[l-1]!='\\') {
-    	szprogdir[l]	= '\\';
-    	szprogdir[l+1]	= '\0';
+    if (l && szprogdir[l - 1] != '\\') {
+        szprogdir[l] = '\\';
+        szprogdir[l + 1] = '\0';
     }
-                
-	if(!InitConfig()) return 4;
+
+    if (!InitConfig())
+        return 4;
     ParseCommandLine(argc, argv);
 
-
-	sysDirList		=
-    includeDirList	=
-    libDirList		= NULL;
+    sysDirList = includeDirList = libDirList = NULL;
 
     l = strlen(szoutdir);
-    if(l && szoutdir[l-1]!='\\') {
-     	szoutdir[l] = '\\';
-     	szoutdir[l+1] = '\0';
+    if (l && szoutdir[l - 1] != '\\') {
+        szoutdir[l] = '\\';
+        szoutdir[l + 1] = '\0';
     }
-	strcpy(outDir,szoutdir);
+    strcpy(outDir, szoutdir);
 
-    sprintf(szTemp,"%s",szprogdir);
+    sprintf(szTemp, "%s", szprogdir);
     AddDirList(&sysDirList, szTemp);
-    sprintf(szTemp,"%sinclude\\",szprogdir);
+    sprintf(szTemp, "%sinclude\\", szprogdir);
     AddDirList(&includeDirList, szTemp);
-    sprintf(szTemp,"%slib\\",szprogdir);
+    sprintf(szTemp, "%slib\\", szprogdir);
     AddDirList(&libDirList, szTemp);
 
-	if(InitializeCompiler()) {
-		message(0,"Compiling file: %s ...", szfilename);
-    	DoCompile(szfilename);
+    if (InitializeCompiler()) {
+        message(0, "Compiling file: %s ...", szfilename);
+        DoCompile(szfilename);
     }
 
-	{
-		float fl = (clock() - start) / CLK_TCK;
-		printf("The time was: %f\n", fl);
-	}
+    {
+        float fl = (clock() - start) / CLK_TCK;
+        printf("The time was: %f\n", fl);
+    }
 
-
-    if(COMPILE_SUCCESS) {
-		ShutDownCompiler();   
-    	PrintTime();
-		message(MSG_COMPSUCCESS);
+    if (COMPILE_SUCCESS) {
+        ShutDownCompiler();
+        PrintTime();
+        message(MSG_COMPSUCCESS);
         //if(warnCnt)
-       	//	getch();
+        //	getch();
     } else // automatically shuts down
-    	fatal(FTL_COMPFAIL);
-    message(0,"");
+        fatal(FTL_COMPFAIL);
+    message(0, "");
 
-	return 0;
+    return 0;
 }
 /******************************************************************************/
-BOOL DoCompile(char *szFilename)
+BOOL DoCompile(char* szFilename)
 {
-	BOOL result;
+    BOOL result;
 
-	result = CompileScript(szFilename, NULL, NULL);
+    result = CompileScript(szFilename, NULL, NULL);
 
-    if(cfg.list.sourcesize && fSrcList) {
-    	CloseFile(fSrcList);
+    if (cfg.list.sourcesize && fSrcList) {
+        CloseFile(fSrcList);
     }
     return result;
 }
 /******************************************************************************/
 void PrintTime()
 {
-	time_t t;
-    char *s;
+    time_t t;
+    char* s;
 
-	time(&t);
-	s = ctime(&t);
+    time(&t);
+    s = ctime(&t);
 
-    message(0,"");
-	message(0,"%s", s);
+    message(0, "");
+    message(0, "%s", s);
 
     //free(s);
 }
 /******************************************************************************/
 
-                /*
+/*
     FILE *f = fopen("e:\\neshla\\_design\\mappershtml.txt","w");
 
     STRINT *si = siMappers, **sip, *sp;

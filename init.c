@@ -16,41 +16,29 @@
 
 /******************************************************************************/
 BOOL InitializeCompiler()
-{                    
-	InitMessages();
+{
+    InitMessages();
 
-	COMPILE_SUCCESS	= TRUE;
+    COMPILE_SUCCESS = TRUE;
 
-	errorCnt		=
-    warnCnt			=
-    todoCnt			= 0;
+    errorCnt = warnCnt = todoCnt = 0;
 
+    scriptNumber = -1; // no script specified yet
 
-	scriptNumber	= -1;	// no script specified yet
+    firstScript = curScript = NULL;
 
-	firstScript 	=
-	curScript		= NULL;
+    defList = defListPtr = NULL;
+    USE_DEFS = TRUE;
 
-	defList			=
-    defListPtr		= NULL;
-    USE_DEFS		= TRUE;
+    fixOffs = NULL;
 
-    fixOffs			= NULL;
-                            
-    curVar 			=
-    vars			=
-    typedefs		= NULL;
+    curVar = vars = typedefs = NULL;
 
-    functions		=
-    curFunction 	=
-    curMacro		=
-    macker			= NULL;
+    functions = curFunction = curMacro = macker = NULL;
 
-    labels			= NULL;
+    labels = NULL;
 
-    enumClasses		= NULL;
-
-
+    enumClasses = NULL;
 
     InitROMHeader();
     InitBanks();
@@ -62,7 +50,7 @@ void ShutDownCompiler()
 {
     FreeFixoffs(&fixOffs);
 
-	DiscardScript(firstScript);
+    DiscardScript(firstScript);
 
     FreeLists(&defList);
 
@@ -72,14 +60,15 @@ void ShutDownCompiler()
 
     ssFree(labelStrings.buffer);
 
-	ReleaseCurVar();
-	ReleaseCurFunc();
+    ReleaseCurVar();
+    ReleaseCurFunc();
 
     FreeVars(&vars);
     FreeVars(&typedefs);
 
     FreeFunctions(&functions);
-    while(ReleaseCurMacro());
+    while (ReleaseCurMacro())
+        ;
     FreeLabels(&labels);
 
     FreeBanks();

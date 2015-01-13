@@ -15,31 +15,30 @@
 /******************************************************************************/
 
 /******************************************************************************/
-BOOL FASTCALL comProc_LabelDeclaration(U16 flags, S16 *brackCnt)
+BOOL FASTCALL comProc_LabelDeclaration(U16 flags, S16* brackCnt)
 {
-    char *label;
+    char* label;
     LABEL* lab;
 
-	if(!IsStringLabel(szTemp))
-    	return FALSE;
+    if (!IsStringLabel(szTemp))
+        return FALSE;
 
     label = strdup(szTemp);
-    if(PeekNextWord()[0]!=':') {
-     	strcpy(szTemp,label);
-    	ssFree(label);
+    if (PeekNextWord()[0] != ':') {
+        strcpy(szTemp, label);
+        ssFree(label);
         return FALSE;
     }
     GetNextWord();
 
-    if(PRECOMPILING)
-        AddLabel(label,-1);
+    if (PRECOMPILING)
+        AddLabel(label, -1);
     else {
-        lab=FindLabel(label);
+        lab = FindLabel(label);
         lab->offset = GetBankOffset();
     }
     ssFree(label);
 
-	return TRUE;
+    return TRUE;
 }
 /******************************************************************************/
-

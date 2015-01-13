@@ -11,13 +11,11 @@
 #ifndef _memalloc_h_
 #define _memalloc_h_
 //---------------------------------------------------------------------------
-void *ssAlloc(U32 size);
-void *ssCalloc(U32 size);
-void  ssFreeX(void **p);
-#define ssFree(p) ssFreeX((void**)&p)          
-void *memclone(void *src, U32 size);
+void* ssAlloc(U32 size);
+void* ssCalloc(U32 size);
+void ssFreeX(void** p);
+#define ssFree(p) ssFreeX((void**)&p)
+void* memclone(void* src, U32 size);
 //---------------------------------------------------------------------------
-#endif                                                                  
+#endif
 //---------------------------------------------------------------------------
-
-
