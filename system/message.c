@@ -10,7 +10,7 @@
 /******************************************************************************/
 #include <stdlib.h>
 #include <stdarg.h>
-#include "..\compiler.h"
+#include "../compiler.h"
 /******************************************************************************/
 int errorCnt, warnCnt, todoCnt;
 BOOL COMPILE_SUCCESS;

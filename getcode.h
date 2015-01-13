@@ -13,19 +13,19 @@
 /******************************************************************************/
 #include "opcodes.h"
 /******************************************************************************/
-#include "expressions\exp_general.h"
+#include "expressions/exp_general.h"
 
-#include "expressions\exp_preprocess.h"
+#include "expressions/exp_preprocess.h"
 
-#include "expressions\exp_vardeclare.h"
-#include "expressions\exp_funcdeclare.h"
-#include "expressions\exp_labels.h"
+#include "expressions/exp_vardeclare.h"
+#include "expressions/exp_funcdeclare.h"
+#include "expressions/exp_labels.h"
 
-#include "expressions\exp_funccall.h"
-#include "expressions\exp_ifloop.h"
-#include "expressions\exp_switch.h"
+#include "expressions/exp_funccall.h"
+#include "expressions/exp_ifloop.h"
+#include "expressions/exp_switch.h"
 
-#include "expressions\exp_asm.h"
+#include "expressions/exp_asm.h"
 /******************************************************************************/
 #define CF_GETNEXTWORD 0x0001
 #define CF_INOBJECT 0x0002

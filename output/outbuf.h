@@ -11,7 +11,7 @@
 #ifndef outbufH
 #define outbufH
 /******************************************************************************/
-#include "..\system\memalloc.h"
+#include "../system/memalloc.h"
 /******************************************************************************/
 #define MAX_RES_NUM 65535
 #define MAX_RES_SIZE 64000

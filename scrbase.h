@@ -13,7 +13,7 @@
 /******************************************************************************/
 #include "prepbase.h"
 #include "functions.h"
-#include "output\banks.h"
+#include "output/banks.h"
 /******************************************************************************/
 
 #define SCRFLAG_CLONE 0x8000

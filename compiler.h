@@ -18,17 +18,17 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdarg.h>
-#include <conio.h>
+//#include <conio.h>
 #include <stdlib.h>
 #include <ctype.h>
 #include <malloc.h>
 
 #include "typedefs.h"
 
-#include "system\message.h"
-#include "system\memalloc.h"
-#include "system\fileio.h"
-#include "system\config.h"
+#include "system/message.h"
+#include "system/memalloc.h"
+#include "system/fileio.h"
+#include "system/config.h"
 
 #include "init.h"
 #include "list.h"
@@ -46,13 +46,13 @@
 #include "functions.h"
 #include "labels.h"
 
-#include "output\outbuf.h"
-#include "output\fixoffs.h"
-#include "output\writecode.h"
-#include "output\scrbin.h"
-#include "output\banks.h"
+#include "output/outbuf.h"
+#include "output/fixoffs.h"
+#include "output/writecode.h"
+#include "output/scrbin.h"
+#include "output/banks.h"
 
-#include "data\data.h"
+#include "data/data.h"
 
 /******************************************************************************/
 #define STRCMP ssStrCmp

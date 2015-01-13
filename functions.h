@@ -12,8 +12,8 @@
 #define functionsH
 /******************************************************************************/
 #include "labels.h"
-#include "output\banks.h"
-#include "output\fixoffs.h"
+#include "output/banks.h"
+#include "output/fixoffs.h"
 /******************************************************************************/
 #define FUNCFLAG_USED 0x8000
 #define FUNCFLAG_NORET 0x4000

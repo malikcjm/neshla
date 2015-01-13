@@ -11,8 +11,8 @@
 #ifndef preprocessH
 #define preprocessH
 /******************************************************************************/
-#include "..\prepbase.h"
-#include "..\getcode.h"
+#include "../prepbase.h"
+#include "../getcode.h"
 /******************************************************************************/
 enum _PREPROCESS_KEYWORDS {
 

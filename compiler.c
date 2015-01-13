@@ -9,11 +9,6 @@
 
 /******************************************************************************/
 #pragma hdrstop
-#ifdef _SYS_BCB
-#include <dir.h>
-#else
-#include <direct.h>
-#endif
 #include <time.h>
 #include "compiler.h"
 /******************************************************************************/
@@ -88,7 +83,7 @@ int main(int argc, char* argv[])
     }
 
     {
-        float fl = (clock() - start) / CLK_TCK;
+        float fl = (clock() - start) / CLOCKS_PER_SEC;
         printf("The time was: %f\n", fl);
     }
 
