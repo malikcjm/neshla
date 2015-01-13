@@ -47,7 +47,7 @@ int main(int argc, char* argv[])
             s--;
         }
     } else {
-        if (!_getcwd(szprogdir, sizeof(szprogdir) - 1))
+        if (!getcwd(szprogdir, sizeof(szprogdir) - 1))
             return 3;
     }
 
