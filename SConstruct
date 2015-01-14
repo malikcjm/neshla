@@ -1,6 +1,9 @@
 import os
 
-env = Environment(CPPPATH=".")
+env = Environment(
+    CPPPATH=".",
+    CCFLAGS=["-g", "-O0"]
+)
 system_obj = env.Object(Glob('system/*.c'))
 data_obj = env.Object(Glob('data/*.c'))
 main_obj = env.Object(Glob('*.c'))

@@ -154,7 +154,7 @@ char* FASTCALL SwapFileExt(char* filename, char* newext)
 void FASTCALL FixPath(char* s)
 {
     int l = (int)strlen(s) - 1;
-    if (s[l] == '\\')
+    if (s[l] == PATH_SEP)
         s[l] = '\0';
 }
 /*********************************************************************/
@@ -162,8 +162,8 @@ char* FASTCALL FixPathSet(char* s)
 {
     int l = (int)strlen(s) - 1;
     strcpy(szFile, s);
-    if (szFile[l] != '\\') {
-        szFile[l + 1] = '\\';
+    if (szFile[l] != PATH_SEP) {
+        szFile[l + 1] = PATH_SEP;
         szFile[l + 2] = '\0';
     }
     return szFile;

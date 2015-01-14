@@ -10,6 +10,7 @@
 /******************************************************************************/
 #pragma hdrstop
 #include "../compiler.h"
+#include "fileio.h"
 /******************************************************************************
  * The compiler options/config
  ******************************************************************************/
@@ -145,13 +146,13 @@ void ParseCommandLine(int argc, char* argv[])
 
     // get the path from the command line
     if (argc < 2) {
-        //message(0, "Usage <filename.as> [-options]");
+        message(0, "Usage <filename.as> [-options]");
         message(0, szhelp);
         bexit(1);
     }
 
     STRCPY(szfilename, argv[1]);
-    STRCPY(szoutdir, ".\\");
+    STRCPY(szoutdir, "./");
 
     for (c = 2; c < argc; c++) {
         COMOP* co;

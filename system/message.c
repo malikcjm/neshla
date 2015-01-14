@@ -279,7 +279,7 @@ U8* cpos;
 /******************************************************************************/
 void InitMessages()
 {
-    logFile = fopen("e:\\lsi\\scripts\\log.txt", "w");
+    logFile = fopen("log.txt", "w");
     curline = -1;
 }
 /******************************************************************************/
@@ -451,16 +451,16 @@ void message(int errnum, ...)
 }
 /******************************************************************************/
 void logprint(char* s, ...)
-{ /*
+{ 
 	va_list argptr;
 
     va_start(argptr, s);
     vfprintf(logFile,s, argptr);
-    va_end(argptr);   */
+    va_end(argptr);  
 }
 /******************************************************************************/
 void logenter()
-{ /*
+{
     INSCRIPT *scr = curScript;
 	int l;
 
@@ -469,11 +469,11 @@ void logenter()
     	curline = scr->line;
 		lpos = GET_BUF_OFFSET(scr->buffer,scr->inPtr);
         cpos = rCode.ptr;
-	}      */
+	}   
 }
 /******************************************************************************/
 void logexit()
-{ /*
+{ 
     INSCRIPT *scr = curScript;
 	char *logStr, *end;
 	if(curline==-1)
@@ -492,7 +492,7 @@ void logexit()
     	curline = -1;
 	}
 
-    logenter();  */
+    logenter();  
 }
 /******************************************************************************/
 void bexit(int code)

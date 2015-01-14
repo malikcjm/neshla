@@ -40,7 +40,7 @@ int main(int argc, char* argv[])
         l = strlen(szprogdir) - 1;
         s = szprogdir + l;
         while (l > 0) {
-            if (*s == '\\') {
+            if (*s == PATH_SEP) {
                 *s = '\0';
                 break;
             }
@@ -52,8 +52,8 @@ int main(int argc, char* argv[])
     }
 
     l = strlen(szprogdir);
-    if (l && szprogdir[l - 1] != '\\') {
-        szprogdir[l] = '\\';
+    if (l && szprogdir[l - 1] != PATH_SEP) {
+        szprogdir[l] = PATH_SEP;
         szprogdir[l + 1] = '\0';
     }
 
@@ -64,17 +64,22 @@ int main(int argc, char* argv[])
     sysDirList = includeDirList = libDirList = NULL;
 
     l = strlen(szoutdir);
-    if (l && szoutdir[l - 1] != '\\') {
-        szoutdir[l] = '\\';
+    if (l && szoutdir[l - 1] != PATH_SEP) {
+        szoutdir[l] = PATH_SEP;
         szoutdir[l + 1] = '\0';
     }
     strcpy(outDir, szoutdir);
 
     sprintf(szTemp, "%s", szprogdir);
     AddDirList(&sysDirList, szTemp);
-    sprintf(szTemp, "%sinclude\\", szprogdir);
+    message(0, "Adding dir %s", szTemp);
+
+    sprintf(szTemp, "%sinclude%c", szprogdir, PATH_SEP);
+    message(0, "Adding dir %s", szTemp);
     AddDirList(&includeDirList, szTemp);
-    sprintf(szTemp, "%slib\\", szprogdir);
+
+    sprintf(szTemp, "%slib%c", szprogdir, PATH_SEP);
+    message(0, "Adding dir %s", szTemp);
     AddDirList(&libDirList, szTemp);
 
     if (InitializeCompiler()) {
@@ -91,8 +96,6 @@ int main(int argc, char* argv[])
         ShutDownCompiler();
         PrintTime();
         message(MSG_COMPSUCCESS);
-        //if(warnCnt)
-        //	getch();
     } else // automatically shuts down
         fatal(FTL_COMPFAIL);
     message(0, "");

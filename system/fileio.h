@@ -14,7 +14,7 @@
 #include "compiler.h"
 #include "list.h"
 
-#define PATH_SEP '\\'
+#define PATH_SEP '/'
 /******************************************************************************/
 typedef struct _STRLIST {
     struct _STRLIST* next;
