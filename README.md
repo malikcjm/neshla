@@ -10,3 +10,4 @@ Compilers are inefficient for low end systems such as the NES.
 Even with optimizers, they would never produce code for fast action games or capable of tapping deep into the NES. 
 It's the best of both worlds!"
 
+Source code updated to compile on Linux OS.
