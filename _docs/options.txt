@@ -1,0 +1,34 @@
+Usage:
+	neshla <filename.as> [-options]
+
+General Options
+	-o path			: Set the destination path for the output files
+	-h				: Display options help
+
+Message options
+
+	-emax n			: Maximum number of errors before stopping (default: 100)
+	
+	-wmax n			: Maximum number of warnings before stopping (default: 100)
+	-wlevel n		: Warning level 0-2 (default: 1)
+	
+	-todo			: enable todo preprocessor messages (default: off)
+	-todomax n		: Maximum number of todo messages before stopping (default: 100)
+	
+	-tell			: enable tell preprocessor messages (default: off)
+	-tellmax n		: Maximum number of tell messages before stopping (default: 100)
+
+
+Stats/Logs
+
+	-listvars		: output file [game].vlst with stats on each variable and it's memory usage/properties (default: off)
+	-listfuncs		: output file [game].flst with stats on each function file and it's address/type (default: off)
+	-listbanks		: output file [game].blst with stats on each bank and it's memory usage (default: off)
+	-listsrc		: output file [game].slst with stats on each source file and it's memory usage (default: off)
+
+
+Output Options
+
+	-outraw			: output raw .prg and .chr binaries (default: off)
+	-nopadding		: pad the output ROMs up to the nearest solid size (default: off)
+	-noheader		: output ROM file without 16 byte iNES header (default: off)
