@@ -16,9 +16,9 @@
 extern U8 opRelSwap[];
 extern OPCODE* activeOpcode, *opcodeSta, *opcodeSty, *opcodeStx;
 /******************************************************************************/
-int FASTCALL IsOpcodeName(char* label);
-int FASTCALL RelSwapOp(int op);
-char* FASTCALL GetOpcodeName(int code);
+int IsOpcodeName(char* label);
+int RelSwapOp(int op);
+char* GetOpcodeName(int code);
 /******************************************************************************/
 #endif
 /******************************************************************************/

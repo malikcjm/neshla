@@ -17,7 +17,7 @@ S32 scriptNumber;
 INSCRIPT* firstScript, *curScript;
 BOOL PRECOMPILING;
 /******************************************************************************/
-INSCRIPT* FASTCALL AddScript(INSCRIPT* parent, char* filename, DEFINE* def, FUNC* macro)
+INSCRIPT* AddScript(INSCRIPT* parent, char* filename, DEFINE* def, FUNC* macro)
 {
     INSCRIPT* scr;
     char* path;
@@ -86,7 +86,7 @@ INSCRIPT* FASTCALL AddScript(INSCRIPT* parent, char* filename, DEFINE* def, FUNC
     return scr;
 }
 /******************************************************************************/
-INSCRIPT* FASTCALL DiscardScript(INSCRIPT* scr)
+INSCRIPT* DiscardScript(INSCRIPT* scr)
 {
     INSCRIPT* parent = NULL;
     if (scr) {
@@ -133,7 +133,7 @@ INSCRIPT* FASTCALL DiscardScript(INSCRIPT* scr)
     return parent;
 }
 /******************************************************************************/
-INSCRIPT* FASTCALL CloneScript(INSCRIPT* scr)
+INSCRIPT* CloneScript(INSCRIPT* scr)
 {
     INSCRIPT* clone = NULL;
     if (scr) {
@@ -152,7 +152,7 @@ INSCRIPT* FASTCALL CloneScript(INSCRIPT* scr)
     return clone;
 }
 /******************************************************************************/
-INSCRIPT* FASTCALL FindScript(INSCRIPT* scr, char* path, char* filename)
+INSCRIPT* FindScript(INSCRIPT* scr, char* path, char* filename)
 {
     while (scr) {
         if (!strcmp(scr->filename, filename) && (!path || !scr->path || !strcmp(scr->path, path)))
@@ -162,7 +162,7 @@ INSCRIPT* FASTCALL FindScript(INSCRIPT* scr, char* path, char* filename)
     return scr;
 }
 /******************************************************************************/
-SCRIPTSTATE* FASTCALL SaveScriptState()
+SCRIPTSTATE* SaveScriptState()
 {
     SCRIPTSTATE* state = (SCRIPTSTATE*)ssAlloc(sizeof(SCRIPTSTATE));
     INSCRIPT* scr;
@@ -186,7 +186,7 @@ SCRIPTSTATE* FASTCALL SaveScriptState()
     return state;
 }
 /******************************************************************************/
-void FASTCALL RestoreScriptState(SCRIPTSTATE** pstate)
+void RestoreScriptState(SCRIPTSTATE** pstate)
 {
     SCRIPTSTATE* state = *pstate;
     INSCRIPT* scr;
@@ -208,11 +208,11 @@ void FASTCALL RestoreScriptState(SCRIPTSTATE** pstate)
     }
 }
 /******************************************************************************/
-void FASTCALL DiscardScriptState(SCRIPTSTATE** pstate)
+void DiscardScriptState(SCRIPTSTATE** pstate)
 {
 }
 /******************************************************************************/
-BOOL FASTCALL CompileScript(char* filename, DEFINE* def, FUNC* macro)
+BOOL CompileScript(char* filename, DEFINE* def, FUNC* macro)
 {
     SCRIPTSTATE* state;
     S16 brackCnt;

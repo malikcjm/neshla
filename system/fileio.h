@@ -20,11 +20,11 @@ typedef struct _STRLIST {
     struct _STRLIST* next;
     char* string;
 } STRLIST;
-char* FASTCALL FixPathSet(char* s);
-BOOL FASTCALL AddDirList(STRLIST** plist, char* label);
-BOOL FASTCALL SearchStringList(STRLIST** plist, char* label);
-BOOL FASTCALL AddStringList(STRLIST** plist, char* label);
-void FASTCALL DisposeStringList(STRLIST** plist);
+char* FixPathSet(char* s);
+BOOL AddDirList(STRLIST** plist, char* label);
+BOOL SearchStringList(STRLIST** plist, char* label);
+BOOL AddStringList(STRLIST** plist, char* label);
+void DisposeStringList(STRLIST** plist);
 /******************************************************************************/
 extern STRLIST* sysDirList, *includeDirList, *libDirList;
 extern char outDir[1024];
@@ -37,17 +37,17 @@ extern char szFile[];
 #define DIR_LIB 4
 #define DIR_ALL (DIR_GAME | DIR_INCLUDE | DIR_LIB | DIR_SCRIPT)
 
-FILE* FASTCALL OpenFile(int dir, char* filename, char* access);
-FILE* FASTCALL PListOpenFile(PLIST* sysDirs, char* filename, char* access);
-FILE* FASTCALL StrListOpenFile(STRLIST* list, char* filename, char* access);
+FILE* OpenFile(int dir, char* filename, char* access);
+FILE* PListOpenFile(PLIST* sysDirs, char* filename, char* access);
+FILE* StrListOpenFile(STRLIST* list, char* filename, char* access);
 #define CloseFile(f) fclose(f)
-U32 FASTCALL FileLen(FILE* fHandle);
-U8* FASTCALL LoadFile(int dir, char* filename, S32* _len);
-char* FASTCALL ExtractFilePath(char* filename);
-char* FASTCALL ExtractFileName(char* filename);
-char* FASTCALL SwapFileExt(char* filename, char* newext);
-void FASTCALL FixPath(char* s);
-void FASTCALL fputscaps(FILE* f, char* s);
+U32 FileLen(FILE* fHandle);
+U8* LoadFile(int dir, char* filename, S32* _len);
+char* ExtractFilePath(char* filename);
+char* ExtractFileName(char* filename);
+char* SwapFileExt(char* filename, char* newext);
+void FixPath(char* s);
+void fputscaps(FILE* f, char* s);
 
 #define FGetB(fHandle) \
     fgetc(fHandle)
@@ -121,16 +121,16 @@ void FASTCALL fputscaps(FILE* f, char* s);
 #define GET_BUF_OFFSET(a, b) \
     ((U32)(b) - (U32)(a))
 
-U16 FASTCALL bGetW_(U8** buf);
-U32 FASTCALL bGetL_(U8** buf);
-void FASTCALL bPutW_(U8** buf, U16 w);
-void FASTCALL bPutL_(U8** buf, U32 l);
+U16 bGetW_(U8** buf);
+U32 bGetL_(U8** buf);
+void bPutW_(U8** buf, U16 w);
+void bPutL_(U8** buf, U32 l);
 
 #define GETWi(b) bGetW_(&(b))
 #define GETLi(b) bGetL_(&(b))
 #define PUTWi(b, w) bPutW_(&(b), w)
 #define PUTLi(b, l) bPutL_(&(b), l)
 
-void FASTCALL FFill(FILE* f, U32 size);
+void FFill(FILE* f, U32 size);
 /******************************************************************************/
 #endif

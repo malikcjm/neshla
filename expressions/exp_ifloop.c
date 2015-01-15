@@ -68,7 +68,7 @@ STRINT siIffys[] = {
     { "", 0 },
 };
 /******************************************************************************/
-BOOL FASTCALL comProc_IfLoop(U16 flags, S16* brackCnt)
+BOOL comProc_IfLoop(U16 flags, S16* brackCnt)
 {
     BOOL BRACK = FALSE, FAR_BRANCH = FALSE, FLIPOP;
     S32 start, whilestart, offset;

@@ -15,7 +15,7 @@
 /******************************************************************************/
 
 /******************************************************************************/
-BOOL FASTCALL comProc_LabelDeclaration(U16 flags, S16* brackCnt)
+BOOL comProc_LabelDeclaration(U16 flags, S16* brackCnt)
 {
     char* label;
     LABEL* lab;

@@ -17,7 +17,7 @@
 /******************************************************************************/
 
 /******************************************************************************/
-BOOL FASTCALL comProc_General(U16 flags, S16* brackCnt)
+BOOL comProc_General(U16 flags, S16* brackCnt)
 {
     if (!STRCMP(szTemp, "return")) {
         WriteReturn();

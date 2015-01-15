@@ -30,11 +30,11 @@ extern PLIST* defList, *defListPtr;
 extern ENUMCLASS* enumClasses;
 extern BOOL USE_DEFS;
 /******************************************************************************/
-BOOL FASTCALL AddDefine(char* label, char* definition);
-BOOL FASTCALL AddEnum(char* enumclass, char* label, int index);
-BOOL FASTCALL DelDefine(char* label);
-DEFINE* FASTCALL FindDefine(PLIST* list, char* label);
-BOOL FASTCALL HandleMacros(char* label);
+BOOL AddDefine(char* label, char* definition);
+BOOL AddEnum(char* enumclass, char* label, int index);
+BOOL DelDefine(char* label);
+DEFINE* FindDefine(PLIST* list, char* label);
+BOOL HandleMacros(char* label);
 /******************************************************************************/
 #endif
 /******************************************************************************/

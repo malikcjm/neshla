@@ -16,8 +16,8 @@
 
 /******************************************************************************/
 
-BOOL FASTCALL comProc_Asm(U16 flags, S16* brackCnt);
-BOOL FASTCALL GetOperands(int opid);
+BOOL comProc_Asm(U16 flags, S16* brackCnt);
+BOOL GetOperands(int opid);
 /******************************************************************************/
 #endif
 /******************************************************************************/
