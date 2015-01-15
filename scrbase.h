@@ -56,15 +56,15 @@ extern S32 scriptNumber;
 extern INSCRIPT* firstScript, *curScript;
 extern BOOL PRECOMPILING;
 /******************************************************************************/
-INSCRIPT* FASTCALL AddScript(INSCRIPT* parent, char* filename, DEFINE* def, FUNC* macro);
-INSCRIPT* FASTCALL DiscardScript(INSCRIPT* scr);
-INSCRIPT* FASTCALL CloneScript(INSCRIPT* scr);
-INSCRIPT* FASTCALL FindScript(INSCRIPT* scr, char* path, char* filename);
-SCRIPTSTATE* FASTCALL SaveScriptState(void);
-void FASTCALL RestoreScriptState(SCRIPTSTATE** pstate);
-void FASTCALL DiscardScriptState(SCRIPTSTATE** pstate);
+INSCRIPT* AddScript(INSCRIPT* parent, char* filename, DEFINE* def, FUNC* macro);
+INSCRIPT* DiscardScript(INSCRIPT* scr);
+INSCRIPT* CloneScript(INSCRIPT* scr);
+INSCRIPT* FindScript(INSCRIPT* scr, char* path, char* filename);
+SCRIPTSTATE* SaveScriptState(void);
+void RestoreScriptState(SCRIPTSTATE** pstate);
+void DiscardScriptState(SCRIPTSTATE** pstate);
 
-BOOL FASTCALL CompileScript(char* filename, DEFINE* def, FUNC* macro);
+BOOL CompileScript(char* filename, DEFINE* def, FUNC* macro);
 /******************************************************************************/
 #endif
 /******************************************************************************/

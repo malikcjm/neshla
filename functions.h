@@ -60,21 +60,21 @@ typedef struct _FUNC {
 extern FUNC* functions, *curFunction, *curMacro, *macker;
 extern char* szFuncTypes[], *szIntTypes[];
 
-void FASTCALL FreeParameters(PARAM** pparams);
-void FASTCALL FreeFunctions(FUNC** pfunc);
-FUNC* FASTCALL AddFunction(char* label, U16 type);
-FUNC* FASTCALL ReleaseCurFunc(void);
-FUNC* FASTCALL FindFunction(FUNC* func, char* label);
-FUNC* FASTCALL FindFirstCurFunc(void);
-FUNC* FASTCALL FindFirstFunction(FUNC* func);
-int FASTCALL IsFuncType(char* label);
-PARAM* FASTCALL FindParameterIndex(PARAM* param, int idx);
-PARAM* FASTCALL AddParameter(FUNC* func, char* str);
-FUNC* FASTCALL MakeCurMacro(FUNC* ofmac);
-FUNC* FASTCALL SetCurMacro(FUNC* newmac);
-FUNC* FASTCALL ReleaseCurMacro(void);
+void FreeParameters(PARAM** pparams);
+void FreeFunctions(FUNC** pfunc);
+FUNC* AddFunction(char* label, U16 type);
+FUNC* ReleaseCurFunc(void);
+FUNC* FindFunction(FUNC* func, char* label);
+FUNC* FindFirstCurFunc(void);
+FUNC* FindFirstFunction(FUNC* func);
+int IsFuncType(char* label);
+PARAM* FindParameterIndex(PARAM* param, int idx);
+PARAM* AddParameter(FUNC* func, char* str);
+FUNC* MakeCurMacro(FUNC* ofmac);
+FUNC* SetCurMacro(FUNC* newmac);
+FUNC* ReleaseCurMacro(void);
 
-PARAM* FASTCALL SetParameter(FUNC* func, int num, char* str);
+PARAM* SetParameter(FUNC* func, int num, char* str);
 /******************************************************************************/
 #endif
 /******************************************************************************/

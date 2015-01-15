@@ -31,7 +31,7 @@ COMPPROC compileProcs[] = {
 
 };
 /******************************************************************************/
-S32 FASTCALL AccOpNum(int idx, S32 num2)
+S32 AccOpNum(int idx, S32 num2)
 {
     S32 _num1;
     switch (idx) {
@@ -63,7 +63,7 @@ S32 FASTCALL AccOpNum(int idx, S32 num2)
     return _num1;
 }
 /******************************************************************************/
-int FASTCALL CheckAccOps(S32* _num1, S16* brackCnt, BOOL R, int set)
+int CheckAccOps(S32* _num1, S16* brackCnt, BOOL R, int set)
 {
     S32 num2;
     int idx, c = 2, cast, unkmode = 0, size = 0;
@@ -174,7 +174,7 @@ int FASTCALL CheckAccOps(S32* _num1, S16* brackCnt, BOOL R, int set)
  * SET:-1, get inval with GetNextWord()
  * SET:-2, inval in current szTemp
  */
-BOOL FASTCALL CompileImmediateInteger(S16 brackCnt, S32* outnum, S32 set, S32 inval)
+BOOL CompileImmediateInteger(S16 brackCnt, S32* outnum, S32 set, S32 inval)
 {
     BOOL NUM_SET = FALSE, SUCCESS = TRUE;
     S32 num1, num2;
@@ -371,7 +371,7 @@ BOOL FASTCALL CompileImmediateInteger(S16 brackCnt, S32* outnum, S32 set, S32 in
     return SUCCESS;
 }
 /******************************************************************************/
-S16 FASTCALL GetCode(U16 flags, S16* _brackCnt)
+S16 GetCode(U16 flags, S16* _brackCnt)
 {
     COMPPROC* compProc;
     int braceCnt = 0;
@@ -476,14 +476,14 @@ S16 FASTCALL GetCode(U16 flags, S16* _brackCnt)
     return 1;
 }
 /******************************************************************************/
-void FASTCALL CheckBracksZero(S16* brackCnt)
+void CheckBracksZero(S16* brackCnt)
 {
     if (*brackCnt)
         error(ERR_BRACKCNT);
     *brackCnt = 0;
 }
 /******************************************************************************/
-void FASTCALL SeekThroughInBracks(S16* brackCnt)
+void SeekThroughInBracks(S16* brackCnt)
 {
     while (szTemp[0] == '(') {
         if (*brackCnt == 0x7FFF)
@@ -493,7 +493,7 @@ void FASTCALL SeekThroughInBracks(S16* brackCnt)
     }
 }
 /******************************************************************************/
-void FASTCALL PeekThroughInBracks(S16* brackCnt)
+void PeekThroughInBracks(S16* brackCnt)
 {
     while (szTemp[0] == '(') {
         if (*brackCnt == 0x7FFF)
@@ -504,7 +504,7 @@ void FASTCALL PeekThroughInBracks(S16* brackCnt)
     }
 }
 /******************************************************************************/
-void FASTCALL SeekThroughOutBracks(S16* brackCnt)
+void SeekThroughOutBracks(S16* brackCnt)
 {
     while (szTemp[0] == ')') {
         if (*brackCnt <= 0) {
@@ -515,7 +515,7 @@ void FASTCALL SeekThroughOutBracks(S16* brackCnt)
     }
 }
 /******************************************************************************/
-void FASTCALL PeekThroughOutBracks(S16* brackCnt)
+void PeekThroughOutBracks(S16* brackCnt)
 {
     while (szTemp[0] == ')') {
         if (*brackCnt <= 0)
@@ -527,7 +527,7 @@ void FASTCALL PeekThroughOutBracks(S16* brackCnt)
     }
 }
 /******************************************************************************/
-void FASTCALL SeekThroughOutBracksNM(S16* brackCnt)
+void SeekThroughOutBracksNM(S16* brackCnt)
 {
     while (szTemp[0] == ')') {
         if (*brackCnt <= 0)
@@ -538,7 +538,7 @@ void FASTCALL SeekThroughOutBracksNM(S16* brackCnt)
     }
 }
 /******************************************************************************/
-void FASTCALL PeekThroughOutBracksNM(S16* brackCnt)
+void PeekThroughOutBracksNM(S16* brackCnt)
 {
     while (szTemp[0] == ')') {
         if (*brackCnt <= 0)

@@ -12,8 +12,6 @@
 #define _typedefs_h_
 /*********************************************************************/
 
-#define FASTCALL
-
 /* data types */
 typedef unsigned char U8;
 typedef signed char S8;

@@ -42,10 +42,10 @@ extern BANK* banks, *bankPtr, *curBank, ramBank;
 extern S32 bankSizes[BANKTYPE_TOTAL];
 extern char* szBankTypes[];
 /******************************************************************************/
-BOOL FASTCALL InitBanks(void);
-void FASTCALL FreeBanks(void);
-BANK* FASTCALL FindBank(char* label);
-void FASTCALL SetBank(S16 type, char* label);
+BOOL InitBanks(void);
+void FreeBanks(void);
+BANK* FindBank(char* label);
+void SetBank(S16 type, char* label);
 
 #define CheckCurBank()               \
     \
@@ -73,29 +73,29 @@ void FASTCALL SetBank(S16 type, char* label);
     \
 }
 
-void FASTCALL LabelBank(char* label);
+void LabelBank(char* label);
 
-void FASTCALL AlignCode(int align);
-S32 FASTCALL GetBankOffset(void);
-S32 FASTCALL GetBankSpace(void);
+void AlignCode(int align);
+S32 GetBankOffset(void);
+S32 GetBankSpace(void);
 
-void FASTCALL BankWrite(U8* data, S32 size);
-void FASTCALL BankFill(U8 c, S32 size);
-void FASTCALL BankSeekFwd(S32 size);
-void FASTCALL BankSeek(S32 dest);
-void FASTCALL BankSeekIntVect(S32 dest);
-void FASTCALL BankPutB(S8 code);
-void FASTCALL BankPutW(S16 code);
-void FASTCALL BankWriteIntVect(S16 code);
-void FASTCALL BankPutL(S32 code);
+void BankWrite(U8* data, S32 size);
+void BankFill(U8 c, S32 size);
+void BankSeekFwd(S32 size);
+void BankSeek(S32 dest);
+void BankSeekIntVect(S32 dest);
+void BankPutB(S8 code);
+void BankPutW(S16 code);
+void BankWriteIntVect(S16 code);
+void BankPutL(S32 code);
 
-U32 FASTCALL CountBanksize(int type);
-void FASTCALL FWriteBanks(int type, FILE* f);
+U32 CountBanksize(int type);
+void FWriteBanks(int type, FILE* f);
 
-BOOL FASTCALL IncBin(char* filename, S32 maxsize);
-char FASTCALL GetPadChar(void);
+BOOL IncBin(char* filename, S32 maxsize);
+char GetPadChar(void);
 
-U32 FASTCALL GetBankIndex(BANK* bank, int banksize);
+U32 GetBankIndex(BANK* bank, int banksize);
 
 long GetBankBinOffset(BANK* bank);
 long GetBankBinLength(BANK* bankOfPtr, U8* ptr, BANK* bankSpan);

@@ -30,7 +30,7 @@ void OpcodesInit(char* label)
     opcodeStx = &opcodes[IsOpcodeName("STX")];
 }
 /******************************************************************************/
-int FASTCALL IsOpcodeName(char* label)
+int IsOpcodeName(char* label)
 {
     int i;
     OPCODE* o = opcodes;
@@ -40,7 +40,7 @@ int FASTCALL IsOpcodeName(char* label)
     return -1;
 }
 /******************************************************************************/
-char* FASTCALL GetOpcodeName(int code)
+char* GetOpcodeName(int code)
 {
     int i, j;
     OPCODE* o = opcodes;
@@ -51,7 +51,7 @@ char* FASTCALL GetOpcodeName(int code)
     return "";
 }
 /******************************************************************************/
-int FASTCALL RelSwapOp(int opcode)
+int RelSwapOp(int opcode)
 {
     int i;
     for (i = 7; i >= 0; i--)

@@ -15,7 +15,7 @@
  ******************************************************************************/
 #pragma package(smart_init)
 /******************************************************************************/
-void FASTCALL ParseMacroBlock(FUNC* func)
+void ParseMacroBlock(FUNC* func)
 {
     OUTBUF macroBlock;
     int braceCnt = 0, sl;
@@ -80,7 +80,7 @@ void FASTCALL ParseMacroBlock(FUNC* func)
     func->macDef = macroBlock.buffer;
 }
 /******************************************************************************/
-BOOL FASTCALL comProc_FuncDeclare(U16 flags, S16* brackCnt)
+BOOL comProc_FuncDeclare(U16 flags, S16* brackCnt)
 {
     int type, subtype;
     U16 funcFlags = 0;

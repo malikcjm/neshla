@@ -90,11 +90,11 @@ enum _PREPROCESS_INTERRUPT {
     PREPROCESS_INTERRUPT_IRQ,
 };
 /******************************************************************************/
-void FASTCALL EnterIfDef(BOOL RESULT);
-void FASTCALL ReleaseIfDef(void);
-BOOL FASTCALL InFalseIfDef(void);
+void EnterIfDef(BOOL RESULT);
+void ReleaseIfDef(void);
+BOOL InFalseIfDef(void);
 /******************************************************************************/
-BOOL FASTCALL comProc_Preprocess(U16 flags, S16* brackCnt);
+BOOL comProc_Preprocess(U16 flags, S16* brackCnt);
 
 typedef struct {
     char* label;

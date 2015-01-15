@@ -83,7 +83,7 @@ STRINT siYesNo[] = {
     { "", 0 },
 };
 /******************************************************************************/
-void FASTCALL EnterIfDef(BOOL RESULT)
+void EnterIfDef(BOOL RESULT)
 {
     IFDEF* ifdef = (IFDEF*)ssAlloc(sizeof(IFDEF));
 
@@ -93,7 +93,7 @@ void FASTCALL EnterIfDef(BOOL RESULT)
     ifdef->ELSE = FALSE;
 }
 /******************************************************************************/
-void FASTCALL ReleaseIfDef()
+void ReleaseIfDef()
 {
     IFDEF* ifdef;
     if (curScript->ifdefTrack) {
@@ -103,12 +103,12 @@ void FASTCALL ReleaseIfDef()
     }
 }
 /******************************************************************************/
-BOOL FASTCALL InFalseIfDef()
+BOOL InFalseIfDef()
 {
     return (curScript->ifdefTrack && !curScript->ifdefTrack->RESULT);
 }
 /******************************************************************************/
-int FASTCALL StrInPrep(char* str, STRNAMELIST* prep)
+int StrInPrep(char* str, STRNAMELIST* prep)
 {
     char* s;
     int cnt = 0;
@@ -131,7 +131,7 @@ int CheckSubList(int code)
     }
 }
 /******************************************************************************/
-int FASTCALL PreprocessCheckYesNo(BOOL* _PREP_OK)
+int PreprocessCheckYesNo(BOOL* _PREP_OK)
 {
     int val = 0;
     if (GetNextWord()[0] == '"') {
@@ -151,7 +151,7 @@ int FASTCALL PreprocessCheckYesNo(BOOL* _PREP_OK)
     return val;
 }
 /******************************************************************************/
-BOOL FASTCALL PreprocessInterrupt(int code)
+BOOL PreprocessInterrupt(int code)
 {
     FUNC* func;
     U8* oldPtr;
@@ -208,7 +208,7 @@ BOOL FASTCALL PreprocessInterrupt(int code)
 }
 /******************************************************************************/
 // preprocessor directives
-BOOL FASTCALL comProc_Preprocess(U16 flags, S16* brackCnt)
+BOOL comProc_Preprocess(U16 flags, S16* brackCnt)
 {
     BOOL PREP_OK = FALSE;
     int code;

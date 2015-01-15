@@ -36,7 +36,7 @@
 
 #define CF_VARCHILD 0x8000
 /******************************************************************************/
-typedef BOOL FASTCALL (*COMPPROC)(U16 flags, S16* brackCnt);
+typedef BOOL (*COMPPROC)(U16 flags, S16* brackCnt);
 /******************************************************************************/
 enum _ARITHOPS {
     ARITHOPS_ADD,
@@ -56,20 +56,20 @@ enum _ARITHOPS {
     ARITHOPS_GT,
     ARITHOPS_LT,
 };
-BOOL FASTCALL CompileImmediateInteger(S16 brackCnt, S32* outnum, S32 set, S32 inval);
+BOOL CompileImmediateInteger(S16 brackCnt, S32* outnum, S32 set, S32 inval);
 /******************************************************************************/
-S16 FASTCALL GetCode(U16 flags, S16* brackCnt);
+S16 GetCode(U16 flags, S16* brackCnt);
 
-void FASTCALL CheckSemicolon(void);
-void FASTCALL CheckBracksZero(S16* brackCnt);
-void FASTCALL SeekThroughInBracks(S16* brackCnt);
-void FASTCALL PeekThroughInBracks(S16* brackCnt);
-void FASTCALL SeekThroughOutBracks(S16* brackCnt);
-void FASTCALL PeekThroughOutBracks(S16* brackCnt);
-void FASTCALL SeekThroughOutBracksNM(S16* brackCnt);
-void FASTCALL PeekThroughOutBracksNM(S16* brackCnt);
+void CheckSemicolon(void);
+void CheckBracksZero(S16* brackCnt);
+void SeekThroughInBracks(S16* brackCnt);
+void PeekThroughInBracks(S16* brackCnt);
+void SeekThroughOutBracks(S16* brackCnt);
+void PeekThroughOutBracks(S16* brackCnt);
+void SeekThroughOutBracksNM(S16* brackCnt);
+void PeekThroughOutBracksNM(S16* brackCnt);
 
-S32 FASTCALL AccOpNum(int idx, S32 _num2);
+S32 AccOpNum(int idx, S32 _num2);
 /******************************************************************************/
 #endif
 /******************************************************************************/

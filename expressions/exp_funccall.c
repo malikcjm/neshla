@@ -17,7 +17,7 @@
 /******************************************************************************/
 
 char szParam[1024];
-char* FASTCALL GetParamBlock()
+char* GetParamBlock()
 {
     int bracks = 0;
     szParam[0] = '\0';
@@ -67,7 +67,7 @@ char* FASTCALL GetParamBlock()
 }
 /******************************************************************************/
 
-void FASTCALL SeekThroughParamBlock()
+void SeekThroughParamBlock()
 {
     int bracks = 0;
 
@@ -105,7 +105,7 @@ void FASTCALL SeekThroughParamBlock()
     }
 }
 /******************************************************************************/
-BOOL FASTCALL comProc_FunctionCall(U16 flags, S16* brackCnt)
+BOOL comProc_FunctionCall(U16 flags, S16* brackCnt)
 {
     FUNC* func, *f_macro;
     int pnum;

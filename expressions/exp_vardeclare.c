@@ -17,9 +17,9 @@
 /******************************************************************************/
 
 /******************************************************************************/
-int FASTCALL CompileVarBody(U16 flags, S16* brackCnt, VAR* var, int* _elementsSize, int braceCnt, int cast);
+int CompileVarBody(U16 flags, S16* brackCnt, VAR* var, int* _elementsSize, int braceCnt, int cast);
 /******************************************************************************/
-BOOL FASTCALL comProc_VarDeclare(U16 flags, S16* brackCnt)
+BOOL comProc_VarDeclare(U16 flags, S16* brackCnt)
 {
     int cast, arraySize, elementsSize, braceCnt;
     S32 offset = -1, elementsEnd;
@@ -206,7 +206,7 @@ BOOL FASTCALL comProc_VarDeclare(U16 flags, S16* brackCnt)
     return TRUE;
 }
 /******************************************************************************/
-int FASTCALL CompileVarBody(U16 flags, S16* brackCnt, VAR* var, int* _elementsSize, int braceCnt, int cast)
+int CompileVarBody(U16 flags, S16* brackCnt, VAR* var, int* _elementsSize, int braceCnt, int cast)
 {
     int elementsSize, len;
     S32 num;

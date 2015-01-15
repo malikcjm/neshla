@@ -18,7 +18,7 @@ ENUMCLASS* enumClasses;
 BOOL USE_DEFS;
 /******************************************************************************/
 
-BOOL FASTCALL AddDefine(char* label, char* definition)
+BOOL AddDefine(char* label, char* definition)
 {
     DEFINE* def, *lastDef;
     char* szS, *szE, *s;
@@ -73,7 +73,7 @@ BOOL FASTCALL AddDefine(char* label, char* definition)
     return TRUE;
 }
 /******************************************************************************/
-ENUMCLASS* FASTCALL FindEnumClass(char* label)
+ENUMCLASS* FindEnumClass(char* label)
 {
     ENUMCLASS* enumClass = enumClasses;
     while (enumClass) {
@@ -84,7 +84,7 @@ ENUMCLASS* FASTCALL FindEnumClass(char* label)
     return enumClass;
 }
 /******************************************************************************/
-void FASTCALL FreeEnumClasses()
+void FreeEnumClasses()
 {
     ENUMCLASS* enumClass = enumClasses, *next;
     while (enumClass) {
@@ -99,7 +99,7 @@ void FASTCALL FreeEnumClasses()
     }
 }
 /******************************************************************************/
-BOOL FASTCALL AddEnum(char* szenumclass, char* label, int index)
+BOOL AddEnum(char* szenumclass, char* label, int index)
 {
     DEFINE* def;
     ENUMCLASS* enumClass;
@@ -130,7 +130,7 @@ BOOL FASTCALL AddEnum(char* szenumclass, char* label, int index)
     return TRUE;
 }
 /******************************************************************************/
-BOOL FASTCALL DelDefine(char* label)
+BOOL DelDefine(char* label)
 {
     DEFINE* def = FindDefine(defList, label);
     //    if(!STRCMP(label,"_STD_MEMORY_H"))
@@ -142,7 +142,7 @@ BOOL FASTCALL DelDefine(char* label)
     return FALSE;
 }
 /******************************************************************************/
-DEFINE* FASTCALL FindDefine(PLIST* list, char* label)
+DEFINE* FindDefine(PLIST* list, char* label)
 {
     register DEFINE* def;
     register int i;
@@ -160,7 +160,7 @@ DEFINE* FASTCALL FindDefine(PLIST* list, char* label)
     return NULL;
 }
 /******************************************************************************/
-BOOL FASTCALL HandleMacros(char* label)
+BOOL HandleMacros(char* label)
 {
     if (USE_DEFS) {
         DEFINE* def;

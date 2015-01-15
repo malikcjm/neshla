@@ -84,7 +84,7 @@ char szFull[8192];
     curScript->inPtr = b;                     \
     sprintf(szFull, "%s%s", szSpace, szTemp); \
     return szTemp;
-char* FASTCALL GetNextWordFunc(BOOL GETCHAR, BOOL ERRORS)
+char* GetNextWordFunc(BOOL GETCHAR, BOOL ERRORS)
 {
     int charPos;
     char* b = curScript->inPtr;
@@ -268,12 +268,12 @@ char* FASTCALL GetNextWordFunc(BOOL GETCHAR, BOOL ERRORS)
     RET_WORD();
 }
 /******************************************************************************/
-char FASTCALL GetNextChar()
+char GetNextChar()
 {
     return GetNextWordFunc(TRUE, FALSE)[0];
 }
 /******************************************************************************/
-char FASTCALL PeekNextChar()
+char PeekNextChar()
 {
     char c;
     SCRIPTSTATE* state;
@@ -309,7 +309,7 @@ char FASTCALL PeekNextChar()
     return szTemp;
 } */
 /******************************************************************************/
-char* FASTCALL PeekNextWord()
+char* PeekNextWord()
 {
     SCRIPTSTATE* state;
 
@@ -320,7 +320,7 @@ char* FASTCALL PeekNextWord()
     return szTemp;
 }
 /******************************************************************************/
-char* FASTCALL GetNextWord()
+char* GetNextWord()
 {
     int firstline;
     INSCRIPT* scr = curScript;
@@ -338,7 +338,7 @@ char* FASTCALL GetNextWord()
 }
 
 /******************************************************************************/
-char* FASTCALL SeekPastWord(char* str)
+char* SeekPastWord(char* str)
 {
     char c;
     BOOL NEXTWORD = TRUE;
@@ -374,7 +374,7 @@ char* FASTCALL SeekPastWord(char* str)
     return szTemp;
 }
 /******************************************************************************/
-void FASTCALL SeekPastBraceBlock()
+void SeekPastBraceBlock()
 {
     if (GetNextWord()[0] == '{')
         SeekPastWord("}");
@@ -384,7 +384,7 @@ void FASTCALL SeekPastBraceBlock()
         DoChar(szTemp);
 }
 /******************************************************************************/
-char* FASTCALL SeekPastChars(char* str)
+char* SeekPastChars(char* str)
 {
     char* s, c;
     BOOL NEXTWORD = TRUE;
@@ -424,7 +424,7 @@ char* FASTCALL SeekPastChars(char* str)
     return szTemp;
 }
 /******************************************************************************/
-char* FASTCALL DoString()
+char* DoString()
 {
     char* b = curScript->inPtr;
     char* s = szString, *end = szString + STRING_MAX_SIZE - 2;
@@ -532,7 +532,7 @@ char* FASTCALL DoString()
 }
 
 /******************************************************************************/
-char* FASTCALL DoStringDirect()
+char* DoStringDirect()
 {
     char* b = curScript->inPtr;
     char* s = szString, *end = szString + STRING_MAX_SIZE - 2;
@@ -590,7 +590,7 @@ char* FASTCALL DoStringDirect()
     return szString;
 }
 /******************************************************************************/
-S32 FASTCALL StrToIntFull(char* s, S32* outint, void** _labelObject, S16* _labelType)
+S32 StrToIntFull(char* s, S32* outint, void** _labelObject, S16* _labelType)
 {
     int i;
     S32 n = 0;
@@ -694,7 +694,7 @@ S32 FASTCALL StrToIntFull(char* s, S32* outint, void** _labelObject, S16* _label
     return 0;
 }
 /******************************************************************************/
-S32 FASTCALL StrToInt(char* s)
+S32 StrToInt(char* s)
 {
     S32 num = 0;
     void* labelObject = NULL;
@@ -714,7 +714,7 @@ S32 FASTCALL StrToInt(char* s)
     return num;
 }
 /******************************************************************************/
-int FASTCALL IsStrNumEx(char* s)
+int IsStrNumEx(char* s)
 {
     S32 num = 0, i;
     void* labelObject = NULL;
@@ -755,7 +755,7 @@ int FASTCALL IsStrNumEx(char* s)
     return 0;
 }
 /******************************************************************************/
-BOOL FASTCALL IsStrNum(char* s)
+BOOL IsStrNum(char* s)
 {
     switch (IsStrNumEx(s)) {
     case 0:
@@ -767,7 +767,7 @@ BOOL FASTCALL IsStrNum(char* s)
     return 0;
 }
 /******************************************************************************/
-BOOL FASTCALL IsStrNumA(char* s)
+BOOL IsStrNumA(char* s)
 {
     S32 num = 0;
     int c = StrToIntFull(s, &num, NULL, NULL);
@@ -775,7 +775,7 @@ BOOL FASTCALL IsStrNumA(char* s)
 }
 /*********************************************************************/
 char szSave[sizeof(szTemp)];
-char* FASTCALL SkipLine(BOOL TOKOK)
+char* SkipLine(BOOL TOKOK)
 {
     NEWLINE = FALSE;
     strcpy(szSave, szTemp);
@@ -790,7 +790,7 @@ char* FASTCALL SkipLine(BOOL TOKOK)
     return curScript->inPtr;
 }
 /*********************************************************************/
-char* FASTCALL SkipBlock()
+char* SkipBlock()
 {
     NEWLINE = FALSE;
     while (PeekNextWord()[0]) {
@@ -802,7 +802,7 @@ char* FASTCALL SkipBlock()
     return curScript->inPtr;
 }
 /******************************************************************************/
-char* FASTCALL IntToStr(S32 num)
+char* IntToStr(S32 num)
 {
     char str[6], *p;
     int i;
@@ -814,12 +814,12 @@ char* FASTCALL IntToStr(S32 num)
     return strdup(str);
 }
 /******************************************************************************/
-BOOL FASTCALL IsCharLabel(char c)
+BOOL IsCharLabel(char c)
 {
     return (isalpha(c) || c == '_');
 }
 /******************************************************************************/
-BOOL FASTCALL IsStringLabel(char* string)
+BOOL IsStringLabel(char* string)
 {
     int charPos;
     if (!isalpha(string[0]) && string[0] != '_')
@@ -830,7 +830,7 @@ BOOL FASTCALL IsStringLabel(char* string)
     return TRUE;
 }
 /******************************************************************************/
-BOOL FASTCALL DoChar(char* ch)
+BOOL DoChar(char* ch)
 {
     char c = GetNextChar(), d;
     if (c == '\\') {
@@ -874,7 +874,7 @@ BOOL FASTCALL DoChar(char* ch)
     return TRUE;
 }
 /******************************************************************************/
-char* FASTCALL GetCharString()
+char* GetCharString()
 {
     char c;
     char* s = szString;
@@ -892,7 +892,7 @@ char* FASTCALL GetCharString()
     return szString;
 }
 /******************************************************************************/
-BOOL FASTCALL SkipFuncBracks()
+BOOL SkipFuncBracks()
 {
     U32 brack = 1;
     while (brack) {
@@ -910,7 +910,7 @@ BOOL FASTCALL SkipFuncBracks()
     return TRUE;
 }
 /******************************************************************************/
-int FASTCALL GetLineChars(char* start, char* ptr)
+int GetLineChars(char* start, char* ptr)
 {
     int cnt = 0;
     while (ptr > start) {
@@ -921,7 +921,7 @@ int FASTCALL GetLineChars(char* start, char* ptr)
     return cnt;
 }
 /******************************************************************************/
-int FASTCALL GetLineCharsEx(char* start, char* ptr)
+int GetLineCharsEx(char* start, char* ptr)
 {
     int cnt;
     cnt = GetLineChars(start, ptr);
@@ -940,7 +940,7 @@ int FASTCALL GetLineCharsEx(char* start, char* ptr)
     return cnt;
 }
 /******************************************************************************/
-BOOL FASTCALL CharInStr(char* s, char c)
+BOOL CharInStr(char* s, char c)
 {
     while (*s)
         if (*s++ == c)
@@ -948,7 +948,7 @@ BOOL FASTCALL CharInStr(char* s, char c)
     return FALSE;
 }
 /******************************************************************************/
-int FASTCALL StrStarts(char* str, char** slist)
+int StrStarts(char* str, char** slist)
 {
     char* s;
     int cnt;
@@ -965,7 +965,7 @@ int FASTCALL StrStarts(char* str, char** slist)
     return 0;
 }
 /******************************************************************************/
-int FASTCALL StrStartsIdx(char* str, char** slist)
+int StrStartsIdx(char* str, char** slist)
 {
     char* s;
     int cnt, idx = 0;
@@ -983,7 +983,7 @@ int FASTCALL StrStartsIdx(char* str, char** slist)
     return -1;
 }
 /******************************************************************************/
-int FASTCALL StrInList(char* str, char** slist)
+int StrInList(char* str, char** slist)
 {
     char* s;
     int cnt = 0;
@@ -996,7 +996,7 @@ int FASTCALL StrInList(char* str, char** slist)
     return -1;
 }
 /******************************************************************************/
-int FASTCALL StrInStrint(char* string, STRINT* strint)
+int StrInStrint(char* string, STRINT* strint)
 {
     char* s;
     int cnt = 0;
@@ -1010,21 +1010,21 @@ int FASTCALL StrInStrint(char* string, STRINT* strint)
     return -1;
 }
 /******************************************************************************/
-S32 FASTCALL ConfirmChar(S32 num)
+S32 ConfirmChar(S32 num)
 {
     if ((U32)num > 0xFF && (-num > 0xFF)) //num<-128 || num>127)//(num&(~0xFF))
         warning(WRN_CHARCONV, num);
     return (U8)num;
 }
 /******************************************************************************/
-S32 FASTCALL ConfirmWord(S32 num)
+S32 ConfirmWord(S32 num)
 {
     if ((U32)num > 0xFFFF && (-num > 0xFFFF)) //num<-32768 || num>32767)//num&(~0xFFFF))
         warning(WRN_WORDCONV, num);
     return (S32)num;
 }
 /******************************************************************************/
-int FASTCALL ssStrCmp(char* s1, char* s2)
+int ssStrCmp(char* s1, char* s2)
 {
     register char c1, c2;
 
@@ -1048,7 +1048,7 @@ int FASTCALL ssStrCmp(char* s1, char* s2)
     return *s2 != 0;
 }
 /******************************************************************************/
-BOOL FASTCALL issep(char c)
+BOOL issep(char c)
 {
     switch (c) {
     case ' ':

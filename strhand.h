@@ -52,55 +52,55 @@ extern BOOL NEWLINE;
 #define ISHEX(c) ((((c) >= 'A') && ((c) <= 'F')) || (((c) >= 'a') && ((c) <= 'f')))
 
 /******************************************************************************/
-char FASTCALL GetNextChar(void);
-char FASTCALL PeekNextChar(void);
-char* FASTCALL PeekNextWord(void);
-char* FASTCALL GetNextWord(void);
-char* FASTCALL SkipLine(BOOL TOKOK);
-char* FASTCALL SkipBlock(void);
+char GetNextChar(void);
+char PeekNextChar(void);
+char* PeekNextWord(void);
+char* GetNextWord(void);
+char* SkipLine(BOOL TOKOK);
+char* SkipBlock(void);
 
-char* FASTCALL DoString(void);
-char* FASTCALL DoStringDirect(void);
-S32 FASTCALL StrToIntFull(char* s, S32* outint, void** _labelObject, S16* _labelType);
-S32 FASTCALL StrToInt(char* s);
-BOOL FASTCALL IsStrNum(char* s);
-int FASTCALL IsStrNumEx(char* s);
-BOOL FASTCALL IsStrNumA(char* s);
-char* FASTCALL IntToStr(S32 num);
-BOOL FASTCALL IsStringLabel(char* string);
-BOOL FASTCALL DoChar(char* ch);
-char* FASTCALL GetCharString(void);
+char* DoString(void);
+char* DoStringDirect(void);
+S32 StrToIntFull(char* s, S32* outint, void** _labelObject, S16* _labelType);
+S32 StrToInt(char* s);
+BOOL IsStrNum(char* s);
+int IsStrNumEx(char* s);
+BOOL IsStrNumA(char* s);
+char* IntToStr(S32 num);
+BOOL IsStringLabel(char* string);
+BOOL DoChar(char* ch);
+char* GetCharString(void);
 
-BOOL FASTCALL SkipFuncBracks(void);
+BOOL SkipFuncBracks(void);
 
-int FASTCALL GetLineChars(char* start, char* ptr);
-int FASTCALL GetLineCharsEx(char* start, char* ptr);
+int GetLineChars(char* start, char* ptr);
+int GetLineCharsEx(char* start, char* ptr);
 
-BOOL FASTCALL CharInStr(char* s, char c);
-int FASTCALL StrStarts(char* str, char** slist);
-int FASTCALL StrStartsIdx(char* str, char** slist);
-char* FASTCALL SeekPastWord(char* str);
-char* FASTCALL SeekPastChars(char* str);
-int FASTCALL StrInList(char* str, char** slist);
-BOOL FASTCALL IsCharLabel(char c);
+BOOL CharInStr(char* s, char c);
+int StrStarts(char* str, char** slist);
+int StrStartsIdx(char* str, char** slist);
+char* SeekPastWord(char* str);
+char* SeekPastChars(char* str);
+int StrInList(char* str, char** slist);
+BOOL IsCharLabel(char c);
 
-S32 FASTCALL ConfirmChar(S32 num);
-S32 FASTCALL ConfirmWord(S32 num);
+S32 ConfirmChar(S32 num);
+S32 ConfirmWord(S32 num);
 
 typedef struct {
     char* string;
     int index;
 } STRINT;
 
-int FASTCALL StrInStrint(char* string, STRINT* strint);
+int StrInStrint(char* string, STRINT* strint);
 
-void FASTCALL SeekPastBraceBlock(void);
+void SeekPastBraceBlock(void);
 
-int FASTCALL ssStrCmp(char* s1, char* s2);
+int ssStrCmp(char* s1, char* s2);
 
 extern char szFull[8192];
 
-BOOL FASTCALL issep(char c);
+BOOL issep(char c);
 
 #define STRCPY(s1, s2) strncpy(s1, s2, sizeof(s1) - 1);
 /******************************************************************************/
