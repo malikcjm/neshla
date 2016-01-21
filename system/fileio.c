@@ -7,13 +7,13 @@
  *	It comes with no warranty.
  ***************************************************************************/
 
-/*********************************************************************/
+
 #include "../compiler.h"
-/*********************************************************************/
+
 char szFile[1024];
 STRLIST* sysDirList, *includeDirList, *libDirList;
 char outDir[1024];
-/*********************************************************************/
+
 FILE* PListOpenFile(PLIST* sysDirs, char* filename, char* access)
 {
     FILE* f = NULL;
@@ -25,7 +25,7 @@ FILE* PListOpenFile(PLIST* sysDirs, char* filename, char* access)
     }
     return f;
 }
-/*********************************************************************/
+
 FILE* StrListOpenFile(STRLIST* list, char* filename, char* access)
 {
     FILE* f = NULL;
@@ -41,7 +41,7 @@ FILE* StrListOpenFile(STRLIST* list, char* filename, char* access)
     }
     return f;
 }
-/*********************************************************************/
+
 FILE* OpenFile(int dir, char* filename, char* access)
 {
     FILE* f = NULL;
@@ -84,7 +84,7 @@ U32 FileLen(FILE* fHandle)
 
     return (U32)len;
 }
-/*********************************************************************/
+
 U8* LoadFile(int dir, char* filename, S32* _len)
 {
     U32 len;
@@ -103,7 +103,7 @@ U8* LoadFile(int dir, char* filename, S32* _len)
     }
     return buffer;
 }
-/*********************************************************************/
+
 char* ExtractFilePath(char* filename)
 {
     char* s;
@@ -119,7 +119,7 @@ char* ExtractFilePath(char* filename)
     szFile[0] = '\0';
     return szFile;
 }
-/*********************************************************************/
+
 char* ExtractFileName(char* filename)
 {
     char* s;
@@ -133,7 +133,7 @@ char* ExtractFileName(char* filename)
     }
     return szFile;
 }
-/*********************************************************************/
+
 char* SwapFileExt(char* filename, char* newext)
 {
     char* s;
@@ -150,14 +150,14 @@ char* SwapFileExt(char* filename, char* newext)
     strcpy(s, newext);
     return szTemp;
 }
-/*********************************************************************/
+
 void FixPath(char* s)
 {
     int l = (int)strlen(s) - 1;
     if (s[l] == PATH_SEP)
         s[l] = '\0';
 }
-/*********************************************************************/
+
 char* FixPathSet(char* s)
 {
     int l = (int)strlen(s) - 1;
@@ -168,33 +168,33 @@ char* FixPathSet(char* s)
     }
     return szFile;
 }
-/*********************************************************************/
+
 U16 bGetW_(U8** buf)
 {
     U16 w = *(((U16*)(*(buf)))); //( (*buf)[0] | ((*buf)[1]<<8) );
     *buf += 2;
     return w;
 }
-/*********************************************************************/
+
 U32 bGetL_(U8** buf)
 {
     U32 l = *(((U32*)(*(buf)))); //( (*buf)[0] | ((*buf)[1]<<8) | ((*buf)[2]<<16) | ((*buf)[3]<<24) );
     *buf += 4;
     return l;
 }
-/*********************************************************************/
+
 void bPutW_(U8** buf, U16 w)
 {
     *(((U16*)(*(buf)))) = w;
     *buf += 2;
 }
-/*********************************************************************/
+
 void bPutL_(U8** buf, U32 l)
 {
     *(((U32*)(*(buf)))) = l;
     *buf += 4;
 }
-/*********************************************************************/
+
 void fputscaps(FILE* f, char* s)
 {
     while (*s) {
@@ -205,7 +205,7 @@ void fputscaps(FILE* f, char* s)
         s++;
     }
 }
-/******************************************************************************/
+
 BOOL AddDirList(STRLIST** plist, char* label)
 {
     label = FixPathSet(label);
@@ -213,7 +213,7 @@ BOOL AddDirList(STRLIST** plist, char* label)
         return TRUE;
     return AddStringList(plist, label);
 }
-/******************************************************************************/
+
 BOOL SearchStringList(STRLIST** plist, char* label)
 {
     STRLIST* list = *plist;
@@ -224,7 +224,7 @@ BOOL SearchStringList(STRLIST** plist, char* label)
     }
     return FALSE;
 }
-/******************************************************************************/
+
 BOOL AddStringList(STRLIST** plist, char* label)
 {
     STRLIST* list = *plist, *newlist;
@@ -243,7 +243,7 @@ BOOL AddStringList(STRLIST** plist, char* label)
 
     return TRUE;
 }
-/******************************************************************************/
+
 void DisposeStringList(STRLIST** plist)
 {
     STRLIST* list = *plist, *next;
@@ -255,10 +255,10 @@ void DisposeStringList(STRLIST** plist)
         }
     *plist = NULL;
 }
-/******************************************************************************/
+
 void FFill(FILE* f, U32 size)
 {
     while (size--)
         fputc(0, f);
 }
-/******************************************************************************/
+

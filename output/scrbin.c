@@ -7,22 +7,22 @@
  *	It comes with no warranty.
  ***************************************************************************/
 
-/******************************************************************************/
+
 #pragma hdrstop
 #include "../compiler.h"
-/******************************************************************************/
+
 #pragma package(smart_init)
-/******************************************************************************/
+
 ROMHEADER romHeader;
 FILE* fSrcList;
-/******************************************************************************/
+
 void InitROMHeader()
 { /*
 	romHeader.mapper	= 0;
 	romHeader.mirroring	= 0; */
     memset(&romHeader, 0, sizeof(romHeader));
 }
-/******************************************************************************/
+
 void fprintvar(FILE* f, VAR* var, char* szStart, int indent)
 {
     VAR* vp;
@@ -57,7 +57,7 @@ void fprintvar(FILE* f, VAR* var, char* szStart, int indent)
         var = var->next;
     }
 }
-/******************************************************************************/
+
 void fprintfunc(FILE* f, FUNC* func, char* szStart, int indent)
 {
     FUNC* fp;
@@ -97,7 +97,7 @@ void fprintfunc(FILE* f, FUNC* func, char* szStart, int indent)
         func = func->next;
     }
 }
-/******************************************************************************/
+
 void fprintbank(FILE* f, BANK* bank, char* szStart, int indent)
 {
     char* sz;
@@ -129,7 +129,7 @@ void fprintbank(FILE* f, BANK* bank, char* szStart, int indent)
     fprintf(f, "Total PRG bytes free: $%08X (%d)\n", totalfreeprg, totalfreeprg);
     fprintf(f, "Total CHR bytes free: $%08X (%d)\n", totalfreechr, totalfreechr);
 }
-/******************************************************************************/
+
 void WritePRG(FILE* f, S32 prgSize)
 {
     FWriteBanks(BANKTYPE_ROM, f);
@@ -147,7 +147,7 @@ void WritePRG(FILE* f, S32 prgSize)
         }
     }
 }
-/******************************************************************************/
+
 void WriteCHR(FILE* f, S32 chrSize)
 {
     FWriteBanks(BANKTYPE_CHR, f);
@@ -155,7 +155,7 @@ void WriteCHR(FILE* f, S32 chrSize)
     while (chrSize++ < romHeader.chrCount)
         FPutB(GetPadChar(), f);
 }
-/******************************************************************************/
+
 S32 PadUp(S32 len)
 {
     S32 n = 1, c, m = 0;
@@ -168,7 +168,7 @@ S32 PadUp(S32 len)
     }
     return len;
 }
-/******************************************************************************/
+
 void AssembleScriptBinary()
 {
     FILE* f, *fp, *fc;
@@ -282,4 +282,4 @@ void AssembleScriptBinary()
 
     CloseFile(f);
 }
-/******************************************************************************/
+

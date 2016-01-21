@@ -7,9 +7,9 @@
  *	It comes with no warranty.
  ***************************************************************************/
 
-/*********************************************************************/
+
 #include "../compiler.h"
-/*********************************************************************/
+
 char szPadding[65], *szPadPtr;
 int bankCounts[BANKTYPE_TOTAL];
 BANK* banks, *bankPtr, *curBank, ramBank;
@@ -31,7 +31,7 @@ char* szBankTypes[] = {
     "PRG ROM",
     "CHR ROM",
 };
-/*********************************************************************/
+
 BOOL InitBanks()
 {
     strcpy(szPadding, "\xFF");
@@ -53,7 +53,7 @@ BOOL InitBanks()
 
     return TRUE;
 }
-/*********************************************************************/
+
 void FreeBanks()
 {
     BANK* next;
@@ -65,7 +65,7 @@ void FreeBanks()
         banks = next;
     }
 }
-/*********************************************************************/
+
 BANK* FindBank(char* label)
 {
     BANK* bank = banks;
@@ -76,7 +76,7 @@ BANK* FindBank(char* label)
     }
     return bank;
 }
-/*********************************************************************/
+
 U32 CountBanksize(int type)
 {
     U32 size = 0;
@@ -89,7 +89,7 @@ U32 CountBanksize(int type)
     }
     return size;
 }
-/*********************************************************************/
+
 U32 GetBankIndex(BANK* bank, int banksize)
 {
     U32 size = 0;
@@ -108,7 +108,7 @@ U32 GetBankIndex(BANK* bank, int banksize)
     }
     return size / banksize;
 }
-/*********************************************************************/
+
 void FWriteBanks(int type, FILE* f)
 {
     BANK* bank = banks;
@@ -119,7 +119,7 @@ void FWriteBanks(int type, FILE* f)
         bank = bank->next;
     }
 }
-/*********************************************************************/
+
 void SetBank(S16 type, char* label)
 {
     BANK* newbank;
@@ -159,16 +159,16 @@ void SetBank(S16 type, char* label)
         sprintf(newbank->label, "bank%04u", newbank->bank);
     }
 }
-/*********************************************************************/
 
-/*********************************************************************/
+
+
 void LabelBank(char* label)
 {
     CheckCurBank();
     ssFree(curBank->label);
     curBank->label = strdup(label);
 }
-/*********************************************************************/
+
 void AlignCode(int align)
 {
     S32 offset;
@@ -189,7 +189,7 @@ void AlignCode(int align)
     }
 }
 
-/******************************************************************************/
+
 void BankFatalOverflow(U32 size)
 {
     if (curBank->buffer + curBank->maxsize != curBank->end)
@@ -197,7 +197,7 @@ void BankFatalOverflow(U32 size)
     else
         fatal(FTL_BANKOVERFLO, curBank->label, size, curBank->maxsize);
 }
-/*********************************************************************/
+
 void BankWrite(U8* data, S32 size)
 {
     CheckCurBank();
@@ -206,7 +206,7 @@ void BankWrite(U8* data, S32 size)
     memcpy(curBank->ptr, data, size);
     curBank->ptr += size;
 }
-/*********************************************************************/
+
 void BankFill(U8 c, S32 size)
 {
     CheckCurBank();
@@ -215,7 +215,7 @@ void BankFill(U8 c, S32 size)
     memset(curBank->ptr, c, size);
     curBank->ptr += size;
 }
-/*********************************************************************/
+
 void BankSeekFwd(S32 size)
 {
     CheckCurBank();
@@ -223,7 +223,7 @@ void BankSeekFwd(S32 size)
         BankFatalOverflow(BANK_OFFSET(curBank) + size);
     curBank->ptr += size;
 }
-/*********************************************************************/
+
 void BankSeek(S32 dest)
 {
     CheckCurBank();
@@ -231,7 +231,7 @@ void BankSeek(S32 dest)
         BankFatalOverflow(BANK_OFFSET(curBank) + dest);
     curBank->ptr = curBank->buffer + dest;
 }
-/*********************************************************************/
+
 void BankSeekIntVect(S32 dest)
 {
     CheckCurBank();
@@ -239,13 +239,13 @@ void BankSeekIntVect(S32 dest)
         BankFatalOverflow(BANK_OFFSET(curBank) + dest);
     curBank->ptr = curBank->buffer + dest;
 }
-/*********************************************************************/
+
 S32 GetBankOffset()
 {
     CheckCurBank();
     return (S32)(BANK_OFFSET(curBank) + curBank->org);
 }
-/*********************************************************************/
+
 S32 GetBankSpace()
 {
     CheckCurBank();
@@ -253,7 +253,7 @@ S32 GetBankSpace()
         curBank = curBank;
     return (curBank->maxsize - BANK_OFFSET(curBank));
 }
-/*********************************************************************/
+
 void BankPutB(S8 code)
 {
     if (curBank->ptr + sizeof(S8) > curBank->end)
@@ -262,7 +262,7 @@ void BankPutB(S8 code)
         *curBank->ptr = code;
     curBank->ptr++;
 }
-/******************************************************************************/
+
 void BankPutW(S16 code)
 {
     if (curBank->ptr + sizeof(S16) > curBank->end)
@@ -272,7 +272,7 @@ void BankPutW(S16 code)
     else
         curBank->ptr += 2;
 }
-/******************************************************************************/
+
 void BankWriteIntVect(S16 code)
 {
     if (curBank->ptr + sizeof(S16) > (curBank->buffer + curBank->maxsize))
@@ -282,7 +282,7 @@ void BankWriteIntVect(S16 code)
     else
         curBank->ptr += 2;
 }
-/******************************************************************************/
+
 void BankPutL(S32 code)
 {
     if (curBank->ptr + sizeof(S32) > curBank->end)
@@ -292,7 +292,7 @@ void BankPutL(S32 code)
     else
         curBank->ptr += 4;
 }
-/*********************************************************************/
+
 BOOL IncBin(char* filename, S32 maxsize)
 {
     U8* buffer;
@@ -330,14 +330,14 @@ BOOL IncBin(char* filename, S32 maxsize)
 
     return TRUE;
 }
-/*********************************************************************/
+
 char GetPadChar(void)
 {
     if (*szPadPtr)
         return *szPadPtr++;
     return *(szPadPtr = szPadding);
 }
-/*********************************************************************/
+
 long GetBankBinOffset(BANK* bankof)
 {
     long offset = 0;
@@ -354,7 +354,7 @@ long GetBankBinOffset(BANK* bankof)
 
     return offset;
 }
-/*********************************************************************/
+
 long GetBankBinLength(BANK* bankOfPtr, U8* ptr, BANK* bankSpan)
 {
     long length = 0;
@@ -377,4 +377,4 @@ long GetBankBinLength(BANK* bankOfPtr, U8* ptr, BANK* bankSpan)
 
     return length;
 }
-/*********************************************************************/
+

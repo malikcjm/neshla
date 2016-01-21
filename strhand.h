@@ -7,12 +7,12 @@
  *	It comes with no warranty.
  ***************************************************************************/
 
-/******************************************************************************/
+
 #ifndef strhandH
 #define strhandH
-/******************************************************************************/
+
 #include "scrbase.h"
-/******************************************************************************/
+
 extern S32 scriptNumber;
 extern int strToInt_UndefLabel, strToInt_Size, lenSzStr;
 extern S16 strToInt_LabelType;
@@ -20,7 +20,7 @@ extern void* strToInt_LabelObject;
 extern INSCRIPT* firstScript, *curScript;
 #define STRING_MAX_SIZE 0x800
 extern char szTemp[STRING_MAX_SIZE], szString[STRING_MAX_SIZE];
-/******************************************************************************/
+
 extern char* szDualOps[];
 extern char* szArithOps[];
 extern U8 opAriths[12][2];
@@ -47,11 +47,11 @@ enum _ACCOP {
 extern char* szObjHdrProps[];
 extern char* szAdditionalKeywords[];
 extern BOOL NEWLINE;
-/******************************************************************************/
+
 #define ISNUM(c) (((c) >= '0') && ((c) <= '9'))
 #define ISHEX(c) ((((c) >= 'A') && ((c) <= 'F')) || (((c) >= 'a') && ((c) <= 'f')))
 
-/******************************************************************************/
+
 char GetNextChar(void);
 char PeekNextChar(void);
 char* PeekNextWord(void);
@@ -103,6 +103,6 @@ extern char szFull[8192];
 BOOL issep(char c);
 
 #define STRCPY(s1, s2) strncpy(s1, s2, sizeof(s1) - 1);
-/******************************************************************************/
+
 #endif
-/******************************************************************************/
+

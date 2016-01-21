@@ -7,7 +7,7 @@
  *	It comes with no warranty.
  ***************************************************************************/
 
-/******************************************************************************/
+
 #pragma hdrstop
 #include "../compiler.h"
 /******************************************************************************
@@ -15,7 +15,7 @@
  ******************************************************************************/
 #pragma package(smart_init)
 
-/******************************************************************************/
+
 BOOL comProcSub_OpParamNONE(U8 opcode, S16* brackCnt)
 {
     // if a newline has been touched since the peeknextword, it's all good
@@ -25,7 +25,7 @@ BOOL comProcSub_OpParamNONE(U8 opcode, S16* brackCnt)
     }
     return FALSE;
 }
-/******************************************************************************/
+
 BOOL comProcSub_OpParamIMD(U8 opcode, S16* brackCnt)
 {
     S32 num;
@@ -42,7 +42,7 @@ BOOL comProcSub_OpParamIMD(U8 opcode, S16* brackCnt)
 
     return TRUE;
 }
-/******************************************************************************/
+
 BOOL comProcSub_OpParamREL(U8 opcode, S16* brackCnt)
 {
     S16 i, type;
@@ -104,7 +104,7 @@ BOOL comProcSub_OpParamREL(U8 opcode, S16* brackCnt)
 
     return TRUE;
 }
-/******************************************************************************/
+
 BOOL comProcSub_OpParamA(U8 opcode, S16* brackCnt)
 {
     if (!STRCMP(szTemp, "A")) {
@@ -115,7 +115,7 @@ BOOL comProcSub_OpParamA(U8 opcode, S16* brackCnt)
     return FALSE;
 }
 
-/******************************************************************************/
+
 BOOL comProc_Asm(U16 flags, S16* brackCnt)
 {
     int opid;
@@ -131,7 +131,7 @@ BOOL comProc_Asm(U16 flags, S16* brackCnt)
 
     return TRUE;
 }
-/******************************************************************************/
+
 BOOL GetOperands(int opid)
 {
     int oa, labelSize;
@@ -327,4 +327,4 @@ BOOL GetOperands(int opid)
 
     return TRUE;
 }
-/******************************************************************************/
+

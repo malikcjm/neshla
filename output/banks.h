@@ -7,10 +7,10 @@
  *	It comes with no warranty.
  ***************************************************************************/
 
-/******************************************************************************/
+
 #ifndef banksH
 #define banksH
-/******************************************************************************/
+
 typedef struct _BANK {
     struct _BANK* next;
     S16 type;
@@ -28,20 +28,20 @@ enum _BANK_TYPE {
 
     BANKTYPE_TOTAL,
 };
-/******************************************************************************/
+
 #define BANK_OFFSET(bank) GET_BUF_OFFSET((bank)->buffer, (bank)->ptr)
 #define BANK_OFFSET_OF(bank, ptr) GET_BUF_OFFSET((bank)->buffer, ptr)
 #define BANK_REMAINING(bank, ptr) GET_BUF_OFFSET(ptr, (bank)->end)
 #define MAX_BANKCOUNT 4096
 #define MAX_BANKSIZE 65536
-/******************************************************************************/
+
 extern char szPadding[65], *szPadPtr;
 extern int bankCounts[BANKTYPE_TOTAL];
 extern BANK* banks, *bankPtr, *curBank, ramBank;
 
 extern S32 bankSizes[BANKTYPE_TOTAL];
 extern char* szBankTypes[];
-/******************************************************************************/
+
 BOOL InitBanks(void);
 void FreeBanks(void);
 BANK* FindBank(char* label);
@@ -99,6 +99,6 @@ U32 GetBankIndex(BANK* bank, int banksize);
 
 long GetBankBinOffset(BANK* bank);
 long GetBankBinLength(BANK* bankOfPtr, U8* ptr, BANK* bankSpan);
-/******************************************************************************/
+
 #endif
-/******************************************************************************/
+

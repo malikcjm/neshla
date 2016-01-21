@@ -7,14 +7,14 @@
  *	It comes with no warranty.
  ***************************************************************************/
 
-/******************************************************************************/
+
 #pragma hdrstop
 #include "compiler.h"
 /******************************************************************************
  * Handles variables
  ******************************************************************************/
 #pragma package(smart_init)
-/******************************************************************************/
+
 FUNC* functions, *curFunction, *curMacro, *macker;
 char* szFuncTypes[] = {
     "function", "interrupt", "inline", ""
@@ -22,7 +22,7 @@ char* szFuncTypes[] = {
 char* szIntTypes[] = {
     "nmi", "start", "irq", ""
 };
-/******************************************************************************/
+
 void FreeParameters(PARAM** pparams)
 {
     PARAM* params = *pparams, *next;
@@ -37,7 +37,7 @@ void FreeParameters(PARAM** pparams)
         *pparams = NULL;
     }
 }
-/******************************************************************************/
+
 void FreeFunctions(FUNC** pfunc)
 {
     FUNC* func = *pfunc, *next;
@@ -58,7 +58,7 @@ void FreeFunctions(FUNC** pfunc)
         *pfunc = NULL;
     }
 }
-/******************************************************************************/
+
 FUNC* AddFunction(char* label, U16 type)
 {
     FUNC* newfunc;
@@ -115,14 +115,14 @@ FUNC* AddFunction(char* label, U16 type)
 
     return newfunc;
 }
-/******************************************************************************/
+
 FUNC* ReleaseCurFunc()
 {
     if (curFunction)
         curFunction = curFunction->parent;
     return curFunction;
 }
-/******************************************************************************/
+
 PARAM* CloneParams(PARAM* params)
 {
     PARAM* newparams = NULL, *prev = NULL, *np = NULL;
@@ -146,7 +146,7 @@ PARAM* CloneParams(PARAM* params)
     }
     return np;
 }
-/******************************************************************************/
+
 FUNC* MakeCurMacro(FUNC* ofmac)
 {
     FUNC* newmac;
@@ -164,12 +164,12 @@ FUNC* MakeCurMacro(FUNC* ofmac)
 
     return newmac;
 }
-/******************************************************************************/
+
 FUNC* SetCurMacro(FUNC* ofmac)
 {
     return curMacro = ofmac;
 }
-/******************************************************************************/
+
 FUNC* ReleaseCurMacro()
 {
     FUNC* next;
@@ -184,7 +184,7 @@ FUNC* ReleaseCurMacro()
     }
     return curMacro;
 }
-/******************************************************************************/
+
 
 FUNC* FindFirstFunction(FUNC* func)
 {
@@ -192,7 +192,7 @@ FUNC* FindFirstFunction(FUNC* func)
         func = func->prev;
     return func;
 }
-/******************************************************************************/
+
 
 FUNC* FindFirstCurFunc()
 {
@@ -201,7 +201,7 @@ FUNC* FindFirstCurFunc()
         func = func->parent;
     return func;
 }
-/******************************************************************************/
+
 
 FUNC* FindFunction(FUNC* func, char* label)
 {
@@ -209,13 +209,13 @@ FUNC* FindFunction(FUNC* func, char* label)
         func = func->prev;
     return func;
 }
-/******************************************************************************/
+
 
 int IsFuncType(char* label)
 {
     return StrInList(label, szFuncTypes);
 }
-/******************************************************************************/
+
 PARAM* AddParameter(FUNC* func, char* str)
 {
     PARAM* param;
@@ -230,7 +230,7 @@ PARAM* AddParameter(FUNC* func, char* str)
 
     return param;
 }
-/******************************************************************************/
+
 
 PARAM* FindParameterIndex(PARAM* param, int idx)
 {
@@ -256,7 +256,7 @@ PARAM* FindParameterIndex(PARAM* param, int idx)
 
     return param;
 }
-/******************************************************************************/
+
 PARAM* SetParameter(FUNC* func, int num, char* str)
 {
     PARAM* param = func->params;
@@ -285,4 +285,4 @@ PARAM* SetParameter(FUNC* func, int num, char* str)
 
     return param;
 }
-/******************************************************************************/
+

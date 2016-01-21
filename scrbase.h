@@ -7,14 +7,14 @@
  *	It comes with no warranty.
  ***************************************************************************/
 
-/******************************************************************************/
+
 #ifndef scrbaseH
 #define scrbaseH
-/******************************************************************************/
+
 #include "prepbase.h"
 #include "functions.h"
 #include "output/banks.h"
-/******************************************************************************/
+
 
 #define SCRFLAG_CLONE 0x8000
 #define SCRFLAG_LOCKED 0x0001
@@ -51,11 +51,11 @@ typedef struct _SCRIPTSTATE {
     INSCRIPT* firstScript, *curScript;
     //char *szTemp;
 } SCRIPTSTATE;
-/******************************************************************************/
+
 extern S32 scriptNumber;
 extern INSCRIPT* firstScript, *curScript;
 extern BOOL PRECOMPILING;
-/******************************************************************************/
+
 INSCRIPT* AddScript(INSCRIPT* parent, char* filename, DEFINE* def, FUNC* macro);
 INSCRIPT* DiscardScript(INSCRIPT* scr);
 INSCRIPT* CloneScript(INSCRIPT* scr);
@@ -65,6 +65,6 @@ void RestoreScriptState(SCRIPTSTATE** pstate);
 void DiscardScriptState(SCRIPTSTATE** pstate);
 
 BOOL CompileScript(char* filename, DEFINE* def, FUNC* macro);
-/******************************************************************************/
+
 #endif
-/******************************************************************************/
+

@@ -7,7 +7,7 @@
  *	It comes with no warranty.
  ***************************************************************************/
 
-/******************************************************************************/
+
 #pragma hdrstop
 #include "../compiler.h"
 #include "../data/data.h"
@@ -15,7 +15,7 @@
  * Handles #preprocessor expressions and enums
  ******************************************************************************/
 #pragma package(smart_init)
-/******************************************************************************/
+
 
 STRNAMELIST szPreprocess[] = {
     { { "setpad" }, { "" } },
@@ -82,7 +82,7 @@ STRINT siYesNo[] = {
 
     { "", 0 },
 };
-/******************************************************************************/
+
 void EnterIfDef(BOOL RESULT)
 {
     IFDEF* ifdef = (IFDEF*)ssAlloc(sizeof(IFDEF));
@@ -92,7 +92,7 @@ void EnterIfDef(BOOL RESULT)
     ifdef->RESULT = RESULT;
     ifdef->ELSE = FALSE;
 }
-/******************************************************************************/
+
 void ReleaseIfDef()
 {
     IFDEF* ifdef;
@@ -102,12 +102,12 @@ void ReleaseIfDef()
         curScript->ifdefTrack = ifdef;
     }
 }
-/******************************************************************************/
+
 BOOL InFalseIfDef()
 {
     return (curScript->ifdefTrack && !curScript->ifdefTrack->RESULT);
 }
-/******************************************************************************/
+
 int StrInPrep(char* str, STRNAMELIST* prep)
 {
     char* s;
@@ -120,7 +120,7 @@ int StrInPrep(char* str, STRNAMELIST* prep)
     }
     return -1;
 }
-/******************************************************************************/
+
 int CheckSubList(int code)
 {
     if (GetNextWord()[0] == '.') {
@@ -130,7 +130,7 @@ int CheckSubList(int code)
         return -1;
     }
 }
-/******************************************************************************/
+
 int PreprocessCheckYesNo(BOOL* _PREP_OK)
 {
     int val = 0;
@@ -150,7 +150,7 @@ int PreprocessCheckYesNo(BOOL* _PREP_OK)
         error(ERR_INTEXP);
     return val;
 }
-/******************************************************************************/
+
 BOOL PreprocessInterrupt(int code)
 {
     FUNC* func;
@@ -206,7 +206,7 @@ BOOL PreprocessInterrupt(int code)
 
     return TRUE;
 }
-/******************************************************************************/
+
 // preprocessor directives
 BOOL comProc_Preprocess(U16 flags, S16* brackCnt)
 {
@@ -260,7 +260,7 @@ BOOL comProc_Preprocess(U16 flags, S16* brackCnt)
         return FALSE;
     }
     switch (code = StrInPrep(GetNextWord(), szPreprocess)) {
-    /**********************************************************************/
+    
     case PREPROCESS_SETPAD:
         if (InFalseIfDef())
             break;
@@ -295,7 +295,7 @@ BOOL comProc_Preprocess(U16 flags, S16* brackCnt)
 
         break;
 
-    /**********************************************************************/
+    
     case PREPROCESS_INCLUDE:
         if (InFalseIfDef())
             break;
@@ -349,7 +349,7 @@ BOOL comProc_Preprocess(U16 flags, S16* brackCnt)
 
         break;
 
-    /**********************************************************************/
+    
     case PREPROCESS_DEFINE:
         if (InFalseIfDef())
             break;
@@ -408,7 +408,7 @@ BOOL comProc_Preprocess(U16 flags, S16* brackCnt)
         PREP_OK = TRUE;
         break;
 
-    /**********************************************************************/
+    
     case PREPROCESS_TODO:
     case PREPROCESS_WARNING:
     case PREPROCESS_ERROR:
@@ -437,7 +437,7 @@ BOOL comProc_Preprocess(U16 flags, S16* brackCnt)
 
         break;
 
-    /**********************************************************************/
+    
     case PREPROCESS_TELL:
         if (InFalseIfDef())
             break;
@@ -473,7 +473,7 @@ BOOL comProc_Preprocess(U16 flags, S16* brackCnt)
         }
         break;
 
-    /**********************************************************************/
+    
     case PREPROCESS_RAM:
         if (InFalseIfDef())
             break;
@@ -508,7 +508,7 @@ BOOL comProc_Preprocess(U16 flags, S16* brackCnt)
         }
         break;
 
-    /**********************************************************************/
+    
     case PREPROCESS_ROM:
         if (InFalseIfDef())
             break;
@@ -576,7 +576,7 @@ BOOL comProc_Preprocess(U16 flags, S16* brackCnt)
         }
         break;
 
-    /**********************************************************************/
+    
     case PREPROCESS_CHR:
         if (InFalseIfDef())
             break;
@@ -622,7 +622,7 @@ BOOL comProc_Preprocess(U16 flags, S16* brackCnt)
         }
         break;
 
-    /**********************************************************************/
+    
     case PREPROCESS_INES:
         if (InFalseIfDef())
             break;
@@ -694,7 +694,7 @@ BOOL comProc_Preprocess(U16 flags, S16* brackCnt)
         }
         break;
 
-    /**********************************************************************/
+    
     case PREPROCESS_INTERRUPT:
         if (InFalseIfDef())
             break;
@@ -712,7 +712,7 @@ BOOL comProc_Preprocess(U16 flags, S16* brackCnt)
             }
         break;
 
-    /**********************************************************************/
+    
     default:
         error(ERR_PREPROCESSORID, szTemp);
     }
@@ -721,4 +721,4 @@ BOOL comProc_Preprocess(U16 flags, S16* brackCnt)
 
     return TRUE;
 }
-/******************************************************************************/
+

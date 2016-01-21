@@ -7,16 +7,16 @@
  *	It comes with no warranty.
  ***************************************************************************/
 
-/******************************************************************************/
+
 #pragma hdrstop
 #include "compiler.h"
-/******************************************************************************/
+
 #pragma package(smart_init)
-/******************************************************************************/
+
 S32 scriptNumber;
 INSCRIPT* firstScript, *curScript;
 BOOL PRECOMPILING;
-/******************************************************************************/
+
 INSCRIPT* AddScript(INSCRIPT* parent, char* filename, DEFINE* def, FUNC* macro)
 {
     INSCRIPT* scr;
@@ -85,7 +85,7 @@ INSCRIPT* AddScript(INSCRIPT* parent, char* filename, DEFINE* def, FUNC* macro)
 
     return scr;
 }
-/******************************************************************************/
+
 INSCRIPT* DiscardScript(INSCRIPT* scr)
 {
     INSCRIPT* parent = NULL;
@@ -132,7 +132,7 @@ INSCRIPT* DiscardScript(INSCRIPT* scr)
     }
     return parent;
 }
-/******************************************************************************/
+
 INSCRIPT* CloneScript(INSCRIPT* scr)
 {
     INSCRIPT* clone = NULL;
@@ -151,7 +151,7 @@ INSCRIPT* CloneScript(INSCRIPT* scr)
     }
     return clone;
 }
-/******************************************************************************/
+
 INSCRIPT* FindScript(INSCRIPT* scr, char* path, char* filename)
 {
     while (scr) {
@@ -161,7 +161,7 @@ INSCRIPT* FindScript(INSCRIPT* scr, char* path, char* filename)
     }
     return scr;
 }
-/******************************************************************************/
+
 SCRIPTSTATE* SaveScriptState()
 {
     SCRIPTSTATE* state = (SCRIPTSTATE*)ssAlloc(sizeof(SCRIPTSTATE));
@@ -185,7 +185,7 @@ SCRIPTSTATE* SaveScriptState()
     }
     return state;
 }
-/******************************************************************************/
+
 void RestoreScriptState(SCRIPTSTATE** pstate)
 {
     SCRIPTSTATE* state = *pstate;
@@ -207,11 +207,11 @@ void RestoreScriptState(SCRIPTSTATE** pstate)
         ssFree(*pstate);
     }
 }
-/******************************************************************************/
+
 void DiscardScriptState(SCRIPTSTATE** pstate)
 {
 }
-/******************************************************************************/
+
 BOOL CompileScript(char* filename, DEFINE* def, FUNC* macro)
 {
     SCRIPTSTATE* state;
@@ -282,4 +282,4 @@ BOOL CompileScript(char* filename, DEFINE* def, FUNC* macro)
     }
     return TRUE;
 }
-/******************************************************************************/
+

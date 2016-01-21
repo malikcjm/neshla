@@ -7,14 +7,14 @@
  *	It comes with no warranty.
  ***************************************************************************/
 
-/******************************************************************************/
+
 #pragma hdrstop
 #include "../compiler.h"
 /******************************************************************************
  * Handles variable declarations
  ******************************************************************************/
 #pragma package(smart_init)
-/******************************************************************************/
+
 void ParseMacroBlock(FUNC* func)
 {
     OUTBUF macroBlock;
@@ -79,7 +79,7 @@ void ParseMacroBlock(FUNC* func)
 
     func->macDef = macroBlock.buffer;
 }
-/******************************************************************************/
+
 BOOL comProc_FuncDeclare(U16 flags, S16* brackCnt)
 {
     int type, subtype;
@@ -180,4 +180,4 @@ BOOL comProc_FuncDeclare(U16 flags, S16* brackCnt)
 
     return TRUE;
 }
-/******************************************************************************/
+

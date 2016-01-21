@@ -7,12 +7,12 @@
  *	It comes with no warranty.
  ***************************************************************************/
 
-/******************************************************************************/
+
 #ifndef prepbaseH
 #define prepbaseH
-/******************************************************************************/
 
-/******************************************************************************/
+
+
 typedef struct {
     char* label;
     char* definition;
@@ -25,16 +25,16 @@ typedef struct _ENUMCLASS {
     PLIST* defList, *defListPtr;
 } ENUMCLASS;
 
-/******************************************************************************/
+
 extern PLIST* defList, *defListPtr;
 extern ENUMCLASS* enumClasses;
 extern BOOL USE_DEFS;
-/******************************************************************************/
+
 BOOL AddDefine(char* label, char* definition);
 BOOL AddEnum(char* enumclass, char* label, int index);
 BOOL DelDefine(char* label);
 DEFINE* FindDefine(PLIST* list, char* label);
 BOOL HandleMacros(char* label);
-/******************************************************************************/
+
 #endif
-/******************************************************************************/
+
