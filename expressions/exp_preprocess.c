@@ -213,6 +213,7 @@ BOOL comProc_Preprocess(U16 flags, S16* brackCnt)
     BOOL PREP_OK = FALSE;
     int code;
     S32 index;
+    S32 skip;
     char* label, *enumClass;
 
     if (*szTemp != '#') {
@@ -310,12 +311,22 @@ BOOL comProc_Preprocess(U16 flags, S16* brackCnt)
         break;
     /*--------------------------------------------------------------------*/
     case PREPROCESS_INCBIN:
-        // "filename"[,maxsize]
+        // "filename"[,skip,maxsize]
         if (InFalseIfDef())
             break;
 
         if (GetNextWord()[0] == '"' && DoStringDirect()) {
             index = -1;
+            skip = 0;
+            if (PeekNextWord()[0] == ',') {
+                GetNextWord();
+                if (IsStrNum(GetNextWord())) {
+                    skip = ConfirmWord(StrToInt(szTemp));
+                } else {
+                    error(ERR_INTEXP);
+                    PREP_OK = FALSE;
+                }
+            }
             if (PeekNextWord()[0] == ',') {
                 GetNextWord();
                 if (IsStrNum(GetNextWord())) {
@@ -325,7 +336,7 @@ BOOL comProc_Preprocess(U16 flags, S16* brackCnt)
                     PREP_OK = FALSE;
                 }
             }
-            if (IncBin(szString, index))
+            if (IncBin(szString, skip, index))
                 PREP_OK = TRUE;
             break;
         }

@@ -25,26 +25,31 @@ BOOL WriteOutbuf(OUTBUF* outbuf, U8* data, U16 size)
 {
     if (outbuf->ptr + size > outbuf->end) {
         fatal(FTL_OUTPUTSCRIPTOVERFLO);
+    } else {
+        memcpy(outbuf->ptr, data, size);
+        outbuf->ptr += size;
+        return TRUE;
     }
-    memcpy(outbuf->ptr, data, size);
-    outbuf->ptr += size;
-    return TRUE;
+
+    return FALSE;
 }
 
 void SeekFwdOutbuf(OUTBUF* outbuf, U16 size)
 {
     if (outbuf->ptr + size > outbuf->end) {
         fatal(FTL_OUTPUTSCRIPTOVERFLO);
+    } else {
+        outbuf->ptr += size;
     }
-    outbuf->ptr += size;
 }
 
 void SeekOutbuf(OUTBUF* outbuf, U16 dest)
 {
     if ((S32)dest > (S32)GET_BUF_OFFSET(outbuf->buffer, outbuf->end)) {
         fatal(FTL_OUTPUTSCRIPTOVERFLO);
+    } else {
+        outbuf->ptr = outbuf->buffer + dest;
     }
-    outbuf->ptr = outbuf->buffer + dest;
 }
 
 void obPutB(OUTBUF* outbuf, S8 code)

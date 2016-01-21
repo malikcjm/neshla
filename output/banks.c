@@ -111,10 +111,13 @@ U32 GetBankIndex(BANK* bank, int banksize)
 
 void FWriteBanks(int type, FILE* f)
 {
+    U16 org;
     BANK* bank = banks;
     while (bank) {
         if (bank->type == type) {
-            FWrite(bank->buffer, bank->maxsize, f);
+            org = (U16)bank->org;
+            FWrite(&org, sizeof(org), f);
+            FWrite(bank->buffer, BANK_OFFSET(bank), f);
         }
         bank = bank->next;
     }
@@ -293,7 +296,7 @@ void BankPutL(S32 code)
         curBank->ptr += 4;
 }
 
-BOOL IncBin(char* filename, S32 maxsize)
+BOOL IncBin(char* filename, S32 skip, S32 maxsize)
 {
     U8* buffer;
     S32 len, bankspace;
@@ -323,7 +326,7 @@ BOOL IncBin(char* filename, S32 maxsize)
         len = bankspace;
     }
 
-    BankWrite(buffer, (S32)len);
+    BankWrite(buffer + skip, (S32)len - skip);
     BankSeekFwd(maxsize - len);
 
     ssFree(buffer);

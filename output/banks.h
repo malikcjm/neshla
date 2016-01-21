@@ -92,7 +92,7 @@ void BankPutL(S32 code);
 U32 CountBanksize(int type);
 void FWriteBanks(int type, FILE* f);
 
-BOOL IncBin(char* filename, S32 maxsize);
+BOOL IncBin(char* filename, S32 skip, S32 maxsize);
 char GetPadChar(void);
 
 U32 GetBankIndex(BANK* bank, int banksize);

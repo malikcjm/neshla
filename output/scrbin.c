@@ -127,7 +127,6 @@ void fprintbank(FILE* f, BANK* bank, char* szStart, int indent)
         bank = bank->next;
     }
     fprintf(f, "Total PRG bytes free: $%08X (%d)\n", totalfreeprg, totalfreeprg);
-    fprintf(f, "Total CHR bytes free: $%08X (%d)\n", totalfreechr, totalfreechr);
 }
 
 void WritePRG(FILE* f, S32 prgSize)
@@ -222,7 +221,8 @@ void AssembleScriptBinary()
 
     prgSize = CountBanksize(BANKTYPE_ROM);
     chrSize = CountBanksize(BANKTYPE_CHR);
-    romHeader.prgCount = ((prgSize)+0x3FFF) & (~0x3FFF);
+    //romHeader.prgCount = ((prgSize)+0x3FFF) & (~0x3FFF);
+    romHeader.prgCount = prgSize;
     romHeader.chrCount = ((chrSize)+0x1FFF) & (~0x1FFF);
 
     if (romHeader.prgrepeat > 1) {
@@ -252,34 +252,38 @@ void AssembleScriptBinary()
     romHeader.ineshdr[7] = (romHeader.mapper & 0xF0);
 
     DoFixOffs(fixOffs);
-
+#if 0
     if ((f = OpenFile(DIR_GAME, SwapFileExt(curScript->filename, ".NES"), "wb")) == NULL) {
         fatal(FTL_SAVINGRESOURCE, szTemp);
     }
     if (cfg.output.rawPrgChr) {
+#endif
         if ((fp = OpenFile(DIR_GAME, SwapFileExt(curScript->filename, ".prg"), "wb")) == NULL) {
             CloseFile(f);
             fatal(FTL_SAVINGRESOURCE, szTemp);
         }
+#if 0
         if ((fc = OpenFile(DIR_GAME, SwapFileExt(curScript->filename, ".chr"), "wb")) == NULL) {
             CloseFile(f);
             CloseFile(fp);
             fatal(FTL_SAVINGRESOURCE, szTemp);
         }
     }
+#endif
+    //if (cfg.output.enableHeader)
+    //    FWrite(romHeader.ineshdr, sizeof(romHeader.ineshdr), f);
 
-    if (cfg.output.enableHeader)
-        FWrite(romHeader.ineshdr, sizeof(romHeader.ineshdr), f);
 
-    if (cfg.output.rawPrgChr) {
+    //f (cfg.output.rawPrgChr)
+    {
         WritePRG(fp, prgSize);
-        WriteCHR(fc, chrSize);
+        //WriteCHR(fc, chrSize);
         CloseFile(fp);
-        CloseFile(fc);
+        //CloseFile(fc);
     }
-    WritePRG(f, prgSize);
-    WriteCHR(f, chrSize);
+    //WritePRG(f, prgSize);
+    //WriteCHR(f, chrSize);
 
-    CloseFile(f);
+    //CloseFile(f);
 }
 
