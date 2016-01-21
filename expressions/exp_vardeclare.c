@@ -7,18 +7,18 @@
  *	It comes with no warranty.
  ***************************************************************************/
 
-/******************************************************************************/
+
 #pragma hdrstop
 #include "../compiler.h"
 /******************************************************************************
  * Handles variable declarations
  ******************************************************************************/
 #pragma package(smart_init)
-/******************************************************************************/
 
-/******************************************************************************/
+
+
 int CompileVarBody(U16 flags, S16* brackCnt, VAR* var, int* _elementsSize, int braceCnt, int cast);
-/******************************************************************************/
+
 BOOL comProc_VarDeclare(U16 flags, S16* brackCnt)
 {
     int cast, arraySize, elementsSize, braceCnt;
@@ -205,7 +205,7 @@ BOOL comProc_VarDeclare(U16 flags, S16* brackCnt)
 
     return TRUE;
 }
-/******************************************************************************/
+
 int CompileVarBody(U16 flags, S16* brackCnt, VAR* var, int* _elementsSize, int braceCnt, int cast)
 {
     int elementsSize, len;
@@ -336,4 +336,4 @@ int CompileVarBody(U16 flags, S16* brackCnt, VAR* var, int* _elementsSize, int b
 
     return braceCnt;
 }
-/******************************************************************************/
+

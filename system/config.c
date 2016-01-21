@@ -7,7 +7,7 @@
  *	It comes with no warranty.
  ***************************************************************************/
 
-/******************************************************************************/
+
 #pragma hdrstop
 #include "../compiler.h"
 #include "fileio.h"
@@ -15,7 +15,7 @@
  * The compiler options/config
  ******************************************************************************/
 #pragma package(smart_init)
-/******************************************************************************/
+
 CONFIG cfg;
 char szfilename[4096], szoutdir[4096], szprogdir[4096];
 
@@ -53,7 +53,7 @@ const char szhelp[] = "Usage:\n"
                       "  -outraw\n    : output raw .prg and .chr binaries (default: off)\n"
                       "  -nopadding\n    \t: pad the output ROMs up to the nearest solid size (default: off)\n"
                       "  -noheader\n    : output ROM file without 16 byte iNES header (default: off)";
-/******************************************************************************/
+
 COMOP comoptions[] = {
     //General Options
     { "o", OPPARAMTYPE_STRING, 0,
@@ -100,7 +100,7 @@ COMOP comoptions[] = {
 
     { "", 0, 0, "" }
 };
-/******************************************************************************/
+
 BOOL InitConfig()
 {
     cfg.msg.warning.max = 100;
@@ -122,7 +122,7 @@ BOOL InitConfig()
 
     return TRUE;
 }
-/******************************************************************************/
+
 int FindComop(char* str)
 {
     COMOP* co = comoptions;
@@ -136,7 +136,7 @@ int FindComop(char* str)
 
     return -1;
 }
-/******************************************************************************/
+
 void ParseCommandLine(int argc, char* argv[])
 {
     int c;
@@ -242,4 +242,4 @@ void ParseCommandLine(int argc, char* argv[])
         }
     }
 }
-/******************************************************************************/
+

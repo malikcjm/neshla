@@ -7,14 +7,14 @@
  *	It comes with no warranty.
  ***************************************************************************/
 
-/******************************************************************************/
+
 #pragma hdrstop
 #include "compiler.h"
-/******************************************************************************/
-#pragma package(smart_init)
-/******************************************************************************/
 
-/******************************************************************************/
+#pragma package(smart_init)
+
+
+
 PLIST* NewList(PLIST* parent, int size)
 {
     PLIST* newlist = (PLIST*)ssCalloc(sizeof(PLIST));
@@ -24,7 +24,7 @@ PLIST* NewList(PLIST* parent, int size)
     newlist->data = (void*)ssCalloc(size);
     return newlist;
 }
-/******************************************************************************/
+
 void FreeList(PLIST* list)
 {
     if (!list)
@@ -36,7 +36,7 @@ void FreeList(PLIST* list)
     ssFree(list->data);
     ssFree(list);
 }
-/******************************************************************************/
+
 void FreeLists(PLIST** plist)
 {
     PLIST* list = *plist;
@@ -47,4 +47,4 @@ void FreeLists(PLIST** plist)
     FreeList(list);
     *plist = NULL;
 }
-/******************************************************************************/
+

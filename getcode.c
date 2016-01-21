@@ -7,14 +7,14 @@
  *	It comes with no warranty.
  ***************************************************************************/
 
-/******************************************************************************/
+
 #pragma hdrstop
 #include "compiler.h"
-/******************************************************************************/
-#pragma package(smart_init)
-/******************************************************************************/
 
-/******************************************************************************/
+#pragma package(smart_init)
+
+
+
 COMPPROC compileProcs[] = {
 
     comProc_Preprocess,
@@ -30,7 +30,7 @@ COMPPROC compileProcs[] = {
     NULL
 
 };
-/******************************************************************************/
+
 S32 AccOpNum(int idx, S32 num2)
 {
     S32 _num1;
@@ -62,7 +62,7 @@ S32 AccOpNum(int idx, S32 num2)
     }
     return _num1;
 }
-/******************************************************************************/
+
 int CheckAccOps(S32* _num1, S16* brackCnt, BOOL R, int set)
 {
     S32 num2;
@@ -169,7 +169,7 @@ int CheckAccOps(S32* _num1, S16* brackCnt, BOOL R, int set)
     strToInt_Size = size;
     return unkmode ? 3 : c;
 }
-/******************************************************************************/
+
 /* SET: 0, inval set
  * SET:-1, get inval with GetNextWord()
  * SET:-2, inval in current szTemp
@@ -370,7 +370,7 @@ BOOL CompileImmediateInteger(S16 brackCnt, S32* outnum, S32 set, S32 inval)
 
     return SUCCESS;
 }
-/******************************************************************************/
+
 S16 GetCode(U16 flags, S16* _brackCnt)
 {
     COMPPROC* compProc;
@@ -475,14 +475,14 @@ S16 GetCode(U16 flags, S16* _brackCnt)
 
     return 1;
 }
-/******************************************************************************/
+
 void CheckBracksZero(S16* brackCnt)
 {
     if (*brackCnt)
         error(ERR_BRACKCNT);
     *brackCnt = 0;
 }
-/******************************************************************************/
+
 void SeekThroughInBracks(S16* brackCnt)
 {
     while (szTemp[0] == '(') {
@@ -492,7 +492,7 @@ void SeekThroughInBracks(S16* brackCnt)
         GetNextWord();
     }
 }
-/******************************************************************************/
+
 void PeekThroughInBracks(S16* brackCnt)
 {
     while (szTemp[0] == '(') {
@@ -503,7 +503,7 @@ void PeekThroughInBracks(S16* brackCnt)
         PeekNextWord();
     }
 }
-/******************************************************************************/
+
 void SeekThroughOutBracks(S16* brackCnt)
 {
     while (szTemp[0] == ')') {
@@ -514,7 +514,7 @@ void SeekThroughOutBracks(S16* brackCnt)
         GetNextWord();
     }
 }
-/******************************************************************************/
+
 void PeekThroughOutBracks(S16* brackCnt)
 {
     while (szTemp[0] == ')') {
@@ -526,7 +526,7 @@ void PeekThroughOutBracks(S16* brackCnt)
         PeekNextWord();
     }
 }
-/******************************************************************************/
+
 void SeekThroughOutBracksNM(S16* brackCnt)
 {
     while (szTemp[0] == ')') {
@@ -537,7 +537,7 @@ void SeekThroughOutBracksNM(S16* brackCnt)
         GetNextWord();
     }
 }
-/******************************************************************************/
+
 void PeekThroughOutBracksNM(S16* brackCnt)
 {
     while (szTemp[0] == ')') {
@@ -550,4 +550,4 @@ void PeekThroughOutBracksNM(S16* brackCnt)
     }
 }
 
-/******************************************************************************/
+

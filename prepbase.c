@@ -7,16 +7,16 @@
  *	It comes with no warranty.
  ***************************************************************************/
 
-/******************************************************************************/
+
 #pragma hdrstop
 #include "compiler.h"
-/******************************************************************************/
+
 #pragma package(smart_init)
-/******************************************************************************/
+
 PLIST* defList, *defListPtr;
 ENUMCLASS* enumClasses;
 BOOL USE_DEFS;
-/******************************************************************************/
+
 
 BOOL AddDefine(char* label, char* definition)
 {
@@ -72,7 +72,7 @@ BOOL AddDefine(char* label, char* definition)
     }
     return TRUE;
 }
-/******************************************************************************/
+
 ENUMCLASS* FindEnumClass(char* label)
 {
     ENUMCLASS* enumClass = enumClasses;
@@ -83,7 +83,7 @@ ENUMCLASS* FindEnumClass(char* label)
     }
     return enumClass;
 }
-/******************************************************************************/
+
 void FreeEnumClasses()
 {
     ENUMCLASS* enumClass = enumClasses, *next;
@@ -98,7 +98,7 @@ void FreeEnumClasses()
         enumClass = next;
     }
 }
-/******************************************************************************/
+
 BOOL AddEnum(char* szenumclass, char* label, int index)
 {
     DEFINE* def;
@@ -129,7 +129,7 @@ BOOL AddEnum(char* szenumclass, char* label, int index)
 
     return TRUE;
 }
-/******************************************************************************/
+
 BOOL DelDefine(char* label)
 {
     DEFINE* def = FindDefine(defList, label);
@@ -141,7 +141,7 @@ BOOL DelDefine(char* label)
     }
     return FALSE;
 }
-/******************************************************************************/
+
 DEFINE* FindDefine(PLIST* list, char* label)
 {
     register DEFINE* def;
@@ -159,7 +159,7 @@ DEFINE* FindDefine(PLIST* list, char* label)
     }
     return NULL;
 }
-/******************************************************************************/
+
 BOOL HandleMacros(char* label)
 {
     if (USE_DEFS) {
@@ -207,4 +207,4 @@ BOOL HandleMacros(char* label)
     }
     return FALSE; // none found, but ok
 }
-/******************************************************************************/
+

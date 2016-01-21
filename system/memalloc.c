@@ -7,9 +7,9 @@
  *	It comes with no warranty.
  ***************************************************************************/
 
-/******************************************************************************/
+
 #include "../compiler.h"
-/******************************************************************************/
+
 /* Allocate memory--always use instead of malloc */
 void* ssAlloc(U32 size)
 {
@@ -19,7 +19,7 @@ void* ssAlloc(U32 size)
     }
     return p;
 }
-/******************************************************************************/
+
 /* Allocate & clear memory--always use instead of calloc */
 void* ssCalloc(U32 size)
 {
@@ -29,7 +29,7 @@ void* ssCalloc(U32 size)
     }
     return p;
 }
-/******************************************************************************/
+
 /* Free allocated memory--always use instead of free() */
 void ssFreeX(void** p)
 {
@@ -37,7 +37,7 @@ void ssFreeX(void** p)
         free(*p);
     *p = NULL;
 }
-/******************************************************************************/
+
 void* memclone(void* src, U32 size)
 {
     void* dest;
@@ -45,4 +45,4 @@ void* memclone(void* src, U32 size)
     memcpy(dest, src, size);
     return dest;
 }
-/******************************************************************************/
+

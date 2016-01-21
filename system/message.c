@@ -7,14 +7,14 @@
  *	It comes with no warranty.
  ***************************************************************************/
 
-/******************************************************************************/
+
 #include <stdlib.h>
 #include <stdarg.h>
 #include "../compiler.h"
-/******************************************************************************/
+
 int errorCnt, warnCnt, todoCnt;
 BOOL COMPILE_SUCCESS;
-/******************************************************************************/
+
 char* szErrors[] = {
     "#: %s",
     "Invalid expression: " QSTR "",
@@ -271,18 +271,18 @@ char* szNotice[] = {
     "DEBUG: %s",
     "Compile: Successful",
 };
-/******************************************************************************/
+
 FILE* logFile;
 int curline;
 S32 lpos;
 U8* cpos;
-/******************************************************************************/
+
 void InitMessages()
 {
     logFile = fopen("log.txt", "w");
     curline = -1;
 }
-/******************************************************************************/
+
 void ShutDownMessages()
 {
     if (logFile) {
@@ -290,7 +290,7 @@ void ShutDownMessages()
         logFile = NULL;
     }
 }
-/******************************************************************************/
+
 
 #define PRINT_EMSG(STRINGS)                                                                         \
     if (scr) {                                                                                      \
@@ -449,7 +449,7 @@ void message(int errnum, ...)
         PRINT_EMSG(szNotice);
     }
 }
-/******************************************************************************/
+
 void logprint(char* s, ...)
 { 
 	va_list argptr;
@@ -458,7 +458,7 @@ void logprint(char* s, ...)
     vfprintf(logFile,s, argptr);
     va_end(argptr);  
 }
-/******************************************************************************/
+
 void logenter()
 {
     INSCRIPT *scr = curScript;
@@ -471,7 +471,7 @@ void logenter()
         cpos = rCode.ptr;
 	}   
 }
-/******************************************************************************/
+
 void logexit()
 { 
     INSCRIPT *scr = curScript;
@@ -494,10 +494,10 @@ void logexit()
 
     logenter();  
 }
-/******************************************************************************/
+
 void bexit(int code)
 {
     message(0, "");
     exit(code);
 }
-/******************************************************************************/
+

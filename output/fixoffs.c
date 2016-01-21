@@ -7,16 +7,16 @@
  *	It comes with no warranty.
  ***************************************************************************/
 
-/******************************************************************************/
+
 #pragma hdrstop
 #include "../compiler.h"
-/******************************************************************************/
-#pragma package(smart_init)
-/******************************************************************************/
-FIXOFFS* fixOffs;
-/******************************************************************************/
 
-/******************************************************************************/
+#pragma package(smart_init)
+
+FIXOFFS* fixOffs;
+
+
+
 
 void AddFixOffs(S16 type, S16 size, U8* ptr, S32 org, void* data)
 {
@@ -52,7 +52,7 @@ void AddFixOffs(S16 type, S16 size, U8* ptr, S32 org, void* data)
         fix->filename = NULL;
 }
 
-/******************************************************************************/
+
 void FreeFixoffs(FIXOFFS** pfix)
 {
     FIXOFFS* fix = *pfix, *iNext;
@@ -68,7 +68,7 @@ void FreeFixoffs(FIXOFFS** pfix)
         *pfix = NULL;
     }
 }
-/******************************************************************************/
+
 
 void DoFixOffs(FIXOFFS* fix)
 {
@@ -98,7 +98,7 @@ void DoFixOffs(FIXOFFS* fix)
     }
 }
 
-/******************************************************************************/
+
 
 S32 GetLabelObjectOffset(void* labelObject, int type)
 {
@@ -116,7 +116,7 @@ S32 GetLabelObjectOffset(void* labelObject, int type)
     }
     return value;
 }
-/******************************************************************************/
+
 
 char* GetLabelObjectName(void* labelObject, int type)
 {
@@ -135,4 +135,4 @@ char* GetLabelObjectName(void* labelObject, int type)
     return value;
 }
 
-/******************************************************************************/
+

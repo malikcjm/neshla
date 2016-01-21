@@ -7,14 +7,14 @@
  *	It comes with no warranty.
  ***************************************************************************/
 
-/******************************************************************************/
+
 #pragma hdrstop
 #include "compiler.h"
-/******************************************************************************/
+
 #pragma package(smart_init)
-/******************************************************************************/
+
 LABEL* labels;
-/******************************************************************************/
+
 BOOL IsLabelUsed(char* str, VAR* varset)
 {
     if (FindVariable(varset, str)) {
@@ -36,7 +36,7 @@ BOOL IsLabelUsed(char* str, VAR* varset)
     }
     return TRUE;
 }
-/******************************************************************************/
+
 void* CheckLabel(char* str, S32* _offset, S16* _type, BOOL CHECK)
 {
     LABEL* lab;
@@ -96,13 +96,13 @@ void* CheckLabel(char* str, S32* _offset, S16* _type, BOOL CHECK)
 
     return NULL;
 }
-/******************************************************************************/
+
 void* GetLabel(char* str, S32* _offset, S16* _type)
 {
 
     return CheckLabel(str, _offset, _type, FALSE);
 }
-/******************************************************************************/
+
 // skip a label object such as a variable/function label if it's not yet known
 BOOL PrecompileSkipLabelObject()
 {
@@ -128,7 +128,7 @@ BOOL PrecompileSkipLabelObject()
         }
     }
 }
-/******************************************************************************/
+
 void FreeLabels(LABEL** plabel)
 {
     LABEL* lab = *plabel, *next;
@@ -142,7 +142,7 @@ void FreeLabels(LABEL** plabel)
         *plabel = NULL;
     }
 }
-/******************************************************************************/
+
 LABEL* CloneLabels(LABEL* lab)
 {
     LABEL* next, *start = NULL, *prev = NULL;
@@ -162,7 +162,7 @@ LABEL* CloneLabels(LABEL* lab)
     }
     return start;
 }
-/******************************************************************************/
+
 LABEL* AddLabel(char* label, S32 offset)
 {
     LABEL* newlab;
@@ -193,7 +193,7 @@ LABEL* AddLabel(char* label, S32 offset)
 
     return newlab;
 }
-/******************************************************************************/
+
 
 LABEL* FindLabel(char* label)
 {
@@ -208,4 +208,4 @@ LABEL* FindLabel(char* label)
     }
     return lab;
 }
-/******************************************************************************/
+

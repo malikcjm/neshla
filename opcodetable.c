@@ -11,7 +11,7 @@
  * The opcode matrixes!
  *****************************************************************************/
 #include "compiler.h"
-/*****************************************************************************/
+
 OPARGS opArgs[prtTOTAL] = {
     { priNONE, prmNONE, "", 0, 0, argNONE, argNONE },
     { priIMD, prmIMD, "immediate", 1, 1, argIMD, argNONE },
@@ -27,7 +27,7 @@ OPARGS opArgs[prtTOTAL] = {
     { priNDY, prmNDY, "[zp address], y", 1, 2, argZPADDR, argY },
     { priA, prmA, "A", 0, 1, argA, argNONE },
 };
-/*****************************************************************************/
+
 OPCODE opcodes[opTOTAL_UNIQUE] = {
     { "BRK", prmIMD, { 0xFF, opBRK_IMD, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF } },
     { "ORA", prmNDX | prm0PG | prmIMD | prmABS | prmNDY | prm0PX | prmABY | prmABX, { 0xFF, opORA_IMD, 0xFF, opORA_0PG, opORA_0PX, 0xFF, opORA_ABS, opORA_ABX, opORA_ABY, 0xFF, opORA_NDX, opORA_NDY, 0xFF } },
@@ -87,4 +87,4 @@ OPCODE opcodes[opTOTAL_UNIQUE] = {
     { "SED", prmNONE, { opSED, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF } },
     { "NOP", prmNONE, { opNOP, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF } },
 };
-/*****************************************************************************/
+

@@ -7,12 +7,12 @@
  *	It comes with no warranty.
  ***************************************************************************/
 
-/******************************************************************************/
+
 #pragma hdrstop
 #include "compiler.h"
-/******************************************************************************/
+
 #pragma package(smart_init)
-/******************************************************************************/
+
 
 char szTemp[STRING_MAX_SIZE], szString[STRING_MAX_SIZE];
 const char hex[17] = "0123456789ABCDEF";
@@ -79,7 +79,7 @@ char* szOptions[] = {
 BOOL NEWLINE;
 int invlabel;
 char szFull[8192];
-/******************************************************************************/
+
 #define RET_WORD()                            \
     curScript->inPtr = b;                     \
     sprintf(szFull, "%s%s", szSpace, szTemp); \
@@ -267,12 +267,12 @@ char* GetNextWordFunc(BOOL GETCHAR, BOOL ERRORS)
         message(1, "curScript is NULL on attempt to return from GetNextWord()");
     RET_WORD();
 }
-/******************************************************************************/
+
 char GetNextChar()
 {
     return GetNextWordFunc(TRUE, FALSE)[0];
 }
-/******************************************************************************/
+
 char PeekNextChar()
 {
     char c;
@@ -284,7 +284,7 @@ char PeekNextChar()
 
     return c;
 }
-/******************************************************************************/
+
 /*char *GetNextWordChecked(BOOL PEEKING)
 {
 	char c,*s;
@@ -308,7 +308,7 @@ char PeekNextChar()
     }
     return szTemp;
 } */
-/******************************************************************************/
+
 char* PeekNextWord()
 {
     SCRIPTSTATE* state;
@@ -319,7 +319,7 @@ char* PeekNextWord()
 
     return szTemp;
 }
-/******************************************************************************/
+
 char* GetNextWord()
 {
     int firstline;
@@ -337,7 +337,7 @@ char* GetNextWord()
     return szTemp;
 }
 
-/******************************************************************************/
+
 char* SeekPastWord(char* str)
 {
     char c;
@@ -373,7 +373,7 @@ char* SeekPastWord(char* str)
     } while (*szTemp);
     return szTemp;
 }
-/******************************************************************************/
+
 void SeekPastBraceBlock()
 {
     if (GetNextWord()[0] == '{')
@@ -383,7 +383,7 @@ void SeekPastBraceBlock()
     else if (szTemp[0] == '\'')
         DoChar(szTemp);
 }
-/******************************************************************************/
+
 char* SeekPastChars(char* str)
 {
     char* s, c;
@@ -423,7 +423,7 @@ char* SeekPastChars(char* str)
     } while (*szTemp);
     return szTemp;
 }
-/******************************************************************************/
+
 char* DoString()
 {
     char* b = curScript->inPtr;
@@ -531,7 +531,7 @@ char* DoString()
     return szString;
 }
 
-/******************************************************************************/
+
 char* DoStringDirect()
 {
     char* b = curScript->inPtr;
@@ -589,7 +589,7 @@ char* DoStringDirect()
 
     return szString;
 }
-/******************************************************************************/
+
 S32 StrToIntFull(char* s, S32* outint, void** _labelObject, S16* _labelType)
 {
     int i;
@@ -693,7 +693,7 @@ S32 StrToIntFull(char* s, S32* outint, void** _labelObject, S16* _labelType)
 
     return 0;
 }
-/******************************************************************************/
+
 S32 StrToInt(char* s)
 {
     S32 num = 0;
@@ -713,7 +713,7 @@ S32 StrToInt(char* s)
 
     return num;
 }
-/******************************************************************************/
+
 int IsStrNumEx(char* s)
 {
     S32 num = 0, i;
@@ -754,7 +754,7 @@ int IsStrNumEx(char* s)
     }
     return 0;
 }
-/******************************************************************************/
+
 BOOL IsStrNum(char* s)
 {
     switch (IsStrNumEx(s)) {
@@ -766,14 +766,14 @@ BOOL IsStrNum(char* s)
     error(ERR_NOTINTEGER, s);
     return 0;
 }
-/******************************************************************************/
+
 BOOL IsStrNumA(char* s)
 {
     S32 num = 0;
     int c = StrToIntFull(s, &num, NULL, NULL);
     return !c;
 }
-/*********************************************************************/
+
 char szSave[sizeof(szTemp)];
 char* SkipLine(BOOL TOKOK)
 {
@@ -789,7 +789,7 @@ char* SkipLine(BOOL TOKOK)
 
     return curScript->inPtr;
 }
-/*********************************************************************/
+
 char* SkipBlock()
 {
     NEWLINE = FALSE;
@@ -801,7 +801,7 @@ char* SkipBlock()
 
     return curScript->inPtr;
 }
-/******************************************************************************/
+
 char* IntToStr(S32 num)
 {
     char str[6], *p;
@@ -813,12 +813,12 @@ char* IntToStr(S32 num)
     *p++ = '\0';
     return strdup(str);
 }
-/******************************************************************************/
+
 BOOL IsCharLabel(char c)
 {
     return (isalpha(c) || c == '_');
 }
-/******************************************************************************/
+
 BOOL IsStringLabel(char* string)
 {
     int charPos;
@@ -829,7 +829,7 @@ BOOL IsStringLabel(char* string)
             return FALSE;
     return TRUE;
 }
-/******************************************************************************/
+
 BOOL DoChar(char* ch)
 {
     char c = GetNextChar(), d;
@@ -873,7 +873,7 @@ BOOL DoChar(char* ch)
     *ch = c;
     return TRUE;
 }
-/******************************************************************************/
+
 char* GetCharString()
 {
     char c;
@@ -891,7 +891,7 @@ char* GetCharString()
     *s++ = '\0';
     return szString;
 }
-/******************************************************************************/
+
 BOOL SkipFuncBracks()
 {
     U32 brack = 1;
@@ -909,7 +909,7 @@ BOOL SkipFuncBracks()
     }
     return TRUE;
 }
-/******************************************************************************/
+
 int GetLineChars(char* start, char* ptr)
 {
     int cnt = 0;
@@ -920,7 +920,7 @@ int GetLineChars(char* start, char* ptr)
     }
     return cnt;
 }
-/******************************************************************************/
+
 int GetLineCharsEx(char* start, char* ptr)
 {
     int cnt;
@@ -939,7 +939,7 @@ int GetLineCharsEx(char* start, char* ptr)
     }
     return cnt;
 }
-/******************************************************************************/
+
 BOOL CharInStr(char* s, char c)
 {
     while (*s)
@@ -947,7 +947,7 @@ BOOL CharInStr(char* s, char c)
             return TRUE;
     return FALSE;
 }
-/******************************************************************************/
+
 int StrStarts(char* str, char** slist)
 {
     char* s;
@@ -964,7 +964,7 @@ int StrStarts(char* str, char** slist)
     }
     return 0;
 }
-/******************************************************************************/
+
 int StrStartsIdx(char* str, char** slist)
 {
     char* s;
@@ -982,7 +982,7 @@ int StrStartsIdx(char* str, char** slist)
     }
     return -1;
 }
-/******************************************************************************/
+
 int StrInList(char* str, char** slist)
 {
     char* s;
@@ -995,7 +995,7 @@ int StrInList(char* str, char** slist)
     }
     return -1;
 }
-/******************************************************************************/
+
 int StrInStrint(char* string, STRINT* strint)
 {
     char* s;
@@ -1009,22 +1009,22 @@ int StrInStrint(char* string, STRINT* strint)
     }
     return -1;
 }
-/******************************************************************************/
+
 S32 ConfirmChar(S32 num)
 {
     if ((U32)num > 0xFF && (-num > 0xFF)) //num<-128 || num>127)//(num&(~0xFF))
         warning(WRN_CHARCONV, num);
     return (U8)num;
 }
-/******************************************************************************/
+
 S32 ConfirmWord(S32 num)
 {
     if ((U32)num > 0xFFFF && (-num > 0xFFFF)) //num<-32768 || num>32767)//num&(~0xFFFF))
         warning(WRN_WORDCONV, num);
     return (S32)num;
 }
-/******************************************************************************/
-int ssStrCmp(char* s1, char* s2)
+
+int ssStrCmp(const char* s1, const char* s2)
 {
     register char c1, c2;
 
@@ -1047,7 +1047,7 @@ int ssStrCmp(char* s1, char* s2)
     }
     return *s2 != 0;
 }
-/******************************************************************************/
+
 BOOL issep(char c)
 {
     switch (c) {
@@ -1059,4 +1059,4 @@ BOOL issep(char c)
     }
     return FALSE;
 }
-/******************************************************************************/
+

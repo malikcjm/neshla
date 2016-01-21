@@ -7,7 +7,7 @@
  *	It comes with no warranty.
  ***************************************************************************/
 
-/******************************************************************************/
+
 #pragma hdrstop
 #include "../compiler.h"
 /******************************************************************************
@@ -24,7 +24,7 @@ char* szCaseOps[] = {
     "CPX",
     "CPY"
 };
-/******************************************************************************/
+
 BOOL comProc_Switch(U16 flags, S16* _brackCnt)
 {
     BOOL FAR_BRANCH;
@@ -124,7 +124,7 @@ BOOL comProc_Switch(U16 flags, S16* _brackCnt)
 
     return TRUE;
 }
-/******************************************************************************/
+
 BOOL CheckNearFar()
 {
     PeekNextWord();
@@ -137,7 +137,7 @@ BOOL CheckNearFar()
     }
     return FALSE;
 }
-/******************************************************************************/
+
 BOOL DoCaseBlock(U16 flags)
 {
     S16 brackCnt = 0;
@@ -146,7 +146,7 @@ BOOL DoCaseBlock(U16 flags)
 
     return TRUE;
 }
-/******************************************************************************/
+
 void AddBranchPos(BRANCHLIST** branches, int mode)
 {
     BRANCHLIST* b = (BRANCHLIST*)ssAlloc(sizeof(BRANCHLIST));
@@ -159,7 +159,7 @@ void AddBranchPos(BRANCHLIST** branches, int mode)
 
     *branches = b;
 }
-/******************************************************************************/
+
 void WriteBranches(BRANCHLIST** branches)
 {
     BRANCHLIST* b = *branches, *next = NULL;
@@ -184,4 +184,4 @@ void WriteBranches(BRANCHLIST** branches)
     }
     *branches = NULL;
 }
-/******************************************************************************/
+

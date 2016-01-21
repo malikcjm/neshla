@@ -7,13 +7,13 @@
  *	It comes with no warranty.
  ***************************************************************************/
 
-/******************************************************************************/
+
 #ifndef preprocessH
 #define preprocessH
-/******************************************************************************/
+
 #include "../prepbase.h"
 #include "../getcode.h"
-/******************************************************************************/
+
 enum _PREPROCESS_KEYWORDS {
 
     PREPROCESS_SETPAD,
@@ -89,11 +89,11 @@ enum _PREPROCESS_INTERRUPT {
     PREPROCESS_INTERRUPT_START,
     PREPROCESS_INTERRUPT_IRQ,
 };
-/******************************************************************************/
+
 void EnterIfDef(BOOL RESULT);
 void ReleaseIfDef(void);
 BOOL InFalseIfDef(void);
-/******************************************************************************/
+
 BOOL comProc_Preprocess(U16 flags, S16* brackCnt);
 
 typedef struct {
@@ -102,6 +102,6 @@ typedef struct {
 } STRNAMELIST;
 
 extern STRNAMELIST szPreprocess[];
-/******************************************************************************/
+
 #endif
-/******************************************************************************/
+

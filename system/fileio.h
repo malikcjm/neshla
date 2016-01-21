@@ -7,15 +7,15 @@
  *	It comes with no warranty.
  ***************************************************************************/
 
-/******************************************************************************/
+
 #ifndef _fileio_h_
 #define _fileio_h_
-/******************************************************************************/
+
 #include "compiler.h"
 #include "list.h"
 
 #define PATH_SEP '/'
-/******************************************************************************/
+
 typedef struct _STRLIST {
     struct _STRLIST* next;
     char* string;
@@ -25,11 +25,11 @@ BOOL AddDirList(STRLIST** plist, char* label);
 BOOL SearchStringList(STRLIST** plist, char* label);
 BOOL AddStringList(STRLIST** plist, char* label);
 void DisposeStringList(STRLIST** plist);
-/******************************************************************************/
+
 extern STRLIST* sysDirList, *includeDirList, *libDirList;
 extern char outDir[1024];
 extern char szFile[];
-/******************************************************************************/
+
 #define DIR_ROOT 0
 #define DIR_GAME 1
 #define DIR_SCRIPT 2
@@ -60,7 +60,7 @@ void fputscaps(FILE* f, char* s);
 #define FPutB(b, fHandle) \
     fputc(b, fHandle)
 
-/*********************************************************************/
+
 #define FPutW(w, fHandle)         \
     \
 {                          \
@@ -132,5 +132,5 @@ void bPutL_(U8** buf, U32 l);
 #define PUTLi(b, l) bPutL_(&(b), l)
 
 void FFill(FILE* f, U32 size);
-/******************************************************************************/
+
 #endif

@@ -7,21 +7,21 @@
  *	It comes with no warranty.
  ***************************************************************************/
 
-/******************************************************************************/
+
 #pragma hdrstop
 #include "../compiler.h"
-/******************************************************************************/
+
 #pragma package(smart_init)
-/******************************************************************************/
 
-/******************************************************************************/
 
-/******************************************************************************/
+
+
+
 U16 GetCodeOffset()
 {
     return (U16)GET_BUF_OFFSET(rCode.buffer, rCode.ptr);
 }
-/******************************************************************************/
+
 void WriteOpcode(U8 code)
 {
     if (!PRECOMPILING) {
@@ -30,7 +30,7 @@ void WriteOpcode(U8 code)
         BankPutB(code);
     }
 }
-/******************************************************************************/
+
 void WriteCodeB(S32 code)
 {
     if (!PRECOMPILING) {
@@ -39,7 +39,7 @@ void WriteCodeB(S32 code)
         logprint(" %d", code);
     }
 }
-/******************************************************************************/
+
 void WriteCodeW(S32 code)
 {
     if (!PRECOMPILING) {
@@ -48,7 +48,7 @@ void WriteCodeW(S32 code)
         logprint(" %d", code);
     }
 }
-/******************************************************************************/
+
 void WriteCodeL(S32 code)
 {
     if (!PRECOMPILING) {
@@ -56,25 +56,25 @@ void WriteCodeL(S32 code)
         logprint(" %d", code);
     }
 }
-/******************************************************************************/
+
 void WriteOpcodeB(U8 code, S32 value)
 {
     WriteOpcode(code);
     WriteCodeB(value);
 }
-/******************************************************************************/
+
 void WriteOpcodeW(U8 code, S32 value)
 {
     WriteOpcode(code);
     WriteCodeW(value);
 }
-/******************************************************************************/
+
 void WriteOpcodeL(U8 code, S32 value)
 {
     WriteOpcode(code);
     WriteCodeL(value);
 }
-/******************************************************************************/
+
 void WriteCodeWL(U8 opw, U8 opl, S32 value)
 {
     if (value & 0xFFFF8000) {
@@ -85,7 +85,7 @@ void WriteCodeWL(U8 opw, U8 opl, S32 value)
         WriteCodeL(value);
     }
 }
-/******************************************************************************/
+
 void WriteReturn()
 {
     if (curFunction)
@@ -98,4 +98,4 @@ void WriteReturn()
             break;
         }
 }
-/******************************************************************************/
+

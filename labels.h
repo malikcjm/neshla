@@ -7,10 +7,10 @@
  *	It comes with no warranty.
  ***************************************************************************/
 
-/******************************************************************************/
+
 #ifndef labelsH
 #define labelsH
-/******************************************************************************/
+
 
 #include "vars.h"
 
@@ -23,7 +23,7 @@ typedef struct _LABEL {
     U16 flags;
 } LABEL;
 
-/******************************************************************************/
+
 extern LABEL* labels;
 void FreeLabels(LABEL** plabels);
 LABEL* AddLabel(char* label, S32 offset);
@@ -36,6 +36,6 @@ void* GetLabel(char* str, S32* _offset, S16* _type);
 void* CheckLabel(char* str, S32* _offset, S16* _type, BOOL check);
 
 BOOL PrecompileSkipLabelObject(void);
-/******************************************************************************/
+
 #endif
-/******************************************************************************/
+

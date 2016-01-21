@@ -7,14 +7,14 @@
  *	It comes with no warranty.
  ***************************************************************************/
 
-/******************************************************************************/
+
 #ifndef functionsH
 #define functionsH
-/******************************************************************************/
+
 #include "labels.h"
 #include "output/banks.h"
 #include "output/fixoffs.h"
-/******************************************************************************/
+
 #define FUNCFLAG_USED 0x8000
 #define FUNCFLAG_NORET 0x4000
 #define FUNCFLAG_MAKETYPE(funcFlags, subtype) \
@@ -56,7 +56,7 @@ typedef struct _FUNC {
     LABEL* labels;
     FIXOFFS* fixoffs;
 } FUNC;
-/******************************************************************************/
+
 extern FUNC* functions, *curFunction, *curMacro, *macker;
 extern char* szFuncTypes[], *szIntTypes[];
 
@@ -75,6 +75,6 @@ FUNC* SetCurMacro(FUNC* newmac);
 FUNC* ReleaseCurMacro(void);
 
 PARAM* SetParameter(FUNC* func, int num, char* str);
-/******************************************************************************/
+
 #endif
-/******************************************************************************/
+

@@ -7,12 +7,12 @@
  *	It comes with no warranty.
  ***************************************************************************/
 
-/******************************************************************************/
+
 #pragma hdrstop
 #include "compiler.h"
-/******************************************************************************/
+
 #pragma package(smart_init)
-/******************************************************************************/
+
 U8 opRelSwap[] = {
     opBPL_REL, opBMI_REL,
     opBVC_REL, opBVS_REL,
@@ -21,7 +21,7 @@ U8 opRelSwap[] = {
 };
 
 OPCODE* activeOpcode, *opcodeSta, *opcodeSty, *opcodeStx; // todo add opcode properties instead for check (ie. OP_STORE)
-/******************************************************************************/
+
 void OpcodesInit(char* label)
 {
     activeOpcode = NULL;
@@ -29,7 +29,7 @@ void OpcodesInit(char* label)
     opcodeSty = &opcodes[IsOpcodeName("STY")];
     opcodeStx = &opcodes[IsOpcodeName("STX")];
 }
-/******************************************************************************/
+
 int IsOpcodeName(char* label)
 {
     int i;
@@ -39,7 +39,7 @@ int IsOpcodeName(char* label)
             return (opTOTAL_UNIQUE - 1) - i;
     return -1;
 }
-/******************************************************************************/
+
 char* GetOpcodeName(int code)
 {
     int i, j;
@@ -50,7 +50,7 @@ char* GetOpcodeName(int code)
                 return ((o - 1))->name;
     return "";
 }
-/******************************************************************************/
+
 int RelSwapOp(int opcode)
 {
     int i;
@@ -60,4 +60,4 @@ int RelSwapOp(int opcode)
         }
     return -1;
 }
-/******************************************************************************/
+
