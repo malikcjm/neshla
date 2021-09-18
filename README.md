@@ -11,3 +11,8 @@ Even with optimizers, they would never produce code for fast action games or cap
 It's the best of both worlds!"
 
 Source code updated to compile on Linux OS.
+
+# build
+To build neshla binary you need scons from https://scons.org/ and gcc multilib installed.
+After cloning repo, run scons command in neshla directory.
+
